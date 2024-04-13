@@ -5,10 +5,10 @@ const Navbar = () => {
     <nav className="bg-gray-800 p-4 text-white">
       <div className="container mx-auto flex items-center justify-between">
         {
-            // logo 
+            <img src="/images/emazon.png" alt="Emazon Logo" />
         }
         <div className="text-2xl font-bold">
-          <a href="/">My E-commerce</a>
+          <a href="/">Emazon</a>
         </div>
 
         {
