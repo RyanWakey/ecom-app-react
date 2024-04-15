@@ -2,26 +2,43 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 p-4 text-white flex justify-between items-center">
+    <nav className="bg-gray-800 p-2 text-white flex justify-between items-center">
+
+      {/* Company Logo */}
       <div className="flex items-center">
-        <img src="/images/emazon.png" alt="Emazon Logo" style={{ height: '60px', marginRight: '20px' }} />
-        <div className="text-3xl font-bold">
-          <a href="/" style={{ lineHeight: '60px' }}>Emazon</a>  {/* Align text height with logo */}
+        <img src="/images/Emazon.png" alt="Emazon Logo" className="mr-3 h-12" /> {}
+        <div className="text-4xl font-bold mr-10"> {}
+          
         </div>
       </div>
 
-      <div className="flex-grow">
+      <div className="flex border border-gray-300 rounded overflow-hidden">
+        {/* Category Dropdown */}
+        <select className="bg-white text-gray-700 border-r" style={{ width: '100px' }}>
+          <option>All</option>
+          <option>Books</option>
+          <option>Electronics</option>
+          
+        </select>
+
+        {/* Search Input */}
         <input
+          className="px-64 w-full"
           type="text"
-          placeholder="Search..."
-          className="rounded p-2 w-full max-w-xl" // Increased width
+          placeholder="Search Emazon.co.uk"
         />
-        <button className="bg-blue-500 hover:bg-blue-700 rounded p-2 ml-2">Search</button>
+
+        {/* Search Button */}
+        <button className="bg-orange-400 px-4 py-2">
+          <svg className="text-white w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 6h13M6 8l-2 2m0 0l2 2m-2-2h13" />
+          </svg>
+        </button>
       </div>
 
-      <div>
-        <a href="/login" className="p-2 hover:underline">Login</a>
-        <a href="/cart" className="p-2 hover:underline">Cart (0)</a>
+      <div className="text-lg"> {}
+        <a href="/login" className="p-3 hover:underline">Login</a>
+        <a href="/cart" className="p-3 hover:underline">Basket (0)</a>
       </div>
     </nav>
   );
