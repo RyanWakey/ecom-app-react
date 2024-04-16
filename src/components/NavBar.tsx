@@ -1,29 +1,26 @@
 import React from 'react';
+import Dropdown from './Dropdown';
 
 const Navbar = () => {
+  
+  const categoryOptions = ["All", "Books", "Electronics", "LongLongLongLong"];
+    
   return (
-    <nav className="bg-gray-800 p-2 text-white flex justify-between items-center">
+
+    <nav className="bg-gray-800 p-1 text-white flex justify-between items-center">
 
       {/* Company Logo */}
       <div className="flex items-center">
-        <img src="/images/Emazon.png" alt="Emazon Logo" className="mr-3 h-12" /> {}
-        <div className="text-4xl font-bold mr-10"> {}
-          
-        </div>
+        <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-12" /> {}
       </div>
 
       <div className="flex border border-gray-300 rounded overflow-hidden">
         {/* Category Dropdown */}
-        <select className="bg-white text-gray-700 border-r" style={{ width: '100px' }}>
-          <option>All</option>
-          <option>Books</option>
-          <option>Electronics</option>
-          
-        </select>
+        <Dropdown options={categoryOptions} />
 
         {/* Search Input */}
         <input
-          className="px-64 w-full"
+          className="px-48 w-full"
           type="text"
           placeholder="Search Emazon.co.uk"
         />
