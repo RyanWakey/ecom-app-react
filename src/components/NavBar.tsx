@@ -7,20 +7,20 @@ const Navbar = () => {
     
   return (
 
-    <nav className="bg-gray-800 p-1 text-white flex justify-between items-center">
+    <nav className="bg-gray-800 p-1 py-2 text-white flex justify-between items-center">
 
       {/* Company Logo */}
       <div className="flex items-center">
-        <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-12" /> {}
+        <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" /> {}
       </div>
 
-      <div className="flex border border-gray-300 rounded overflow-hidden">
+      <div className="flex border border-gray-500 rounded overflow-hidden text-sm">
         {/* Category Dropdown */}
         <Dropdown options={categoryOptions} />
 
         {/* Search Input */}
         <input
-          className="px-48 w-full"
+          className="px-48 w-full text-xs"
           type="text"
           placeholder="Search Emazon.co.uk"
         />

@@ -16,7 +16,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options }) => {
       if (textWidthRef.current) {
         textWidthRef.current.style.display = "inline"; // Make span visible to measure
         textWidthRef.current.textContent = selectedOption; // Set text to selected option
-        const newWidth = textWidthRef.current.offsetWidth + 25; // Add padding to the calculated width
+        const newWidth = textWidthRef.current.offsetWidth + 35; // Add padding to the calculated width
         textWidthRef.current.style.display = "none"; // Hide again
         if (selectRef.current) {
           selectRef.current.style.width = `${newWidth}px`;
@@ -49,7 +49,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options }) => {
           setSelectedOption(e.target.value);
         }}
         style={{ width: `${width}px` }}
-        className="bg-white py-2 text-gray-700 border-r"
+        className="bg-gray-300 py-2 text-gray-700 border-r"
       >
         {options.map(option => (
           <option key={option} value={option}>
