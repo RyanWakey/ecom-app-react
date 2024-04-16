@@ -1,7 +1,8 @@
 import React from 'react';
 import Dropdown from './Dropdown';
+import basketImage from '../../public/images/CartIcon.png';
 
-const Navbar = () => {
+const Navbar = ( {cartItemCount } ) => {
   
   const categoryOptions = ["All", "Books", "Electronics", "LongLongLongLong"];
     
@@ -33,9 +34,15 @@ const Navbar = () => {
         </button>
       </div>
 
-      <div className="text-lg"> {}
-        <a href="/login" className="p-3 hover:underline">Login</a>
-        <a href="/cart" className="p-3 hover:underline">Basket (0)</a>
+       {/* Profile and Basket Icon */}
+       <div className="flex items-center">
+        <a href="/login" className="p-2 hover:underline">Login</a>
+        <a href="/cart" className="relative p-2 hover:underline">
+          <img src={basketImage} alt="Basket" className="h-8 w-8" />
+          {cartItemCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-1">{cartItemCount}</span>
+          )}
+        </a>
       </div>
     </nav>
   );
