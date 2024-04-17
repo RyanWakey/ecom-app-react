@@ -4,7 +4,7 @@ import Navbar from './NavBar';
 const Homepage = () => {
   return (
     <>
-      <Navbar />
+      <Navbar cartItemCount={0}/>
       {
 
       }
