@@ -25,15 +25,15 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount }) => {
         </button>
       </div>
 
-      {/* Profile and Basket Icon */}
+       {/* Profile and Basket Icon */}
       <div className="flex items-center">
         <a href="/login" className="hover:underline">Login</a>
-        <div className="relative">
-          <img src="/images/CartIcon.png" alt="Basket" className="h-12" />
+        <div className="relative h-10"> {/* Set the height of the container for the basket image */}
+          <img src="/images/CartIcon.png" alt="Basket" className="h-full " /> {/* Image will fill the height of its container */}
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-2 py-1">
             {cartItemCount}
           </span>
-          <span className="ml-2">Basket</span>
+          <span className="align-middle">Basket</span>
         </div>
       </div>
     </nav>
