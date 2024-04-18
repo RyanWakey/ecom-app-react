@@ -29,11 +29,11 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount }) => {
       <div className="flex items-center">
         <a href="/login" className="hover:underline">Login</a>
         <div className="relative h-10"> {/* Set the height of the container for the basket image */}
-          <img src="/images/CartIcon.png" alt="Basket" className="h-full " /> {/* Image will fill the height of its container */}
+          <img src="/images/CartIcon.png" alt="Basket" className="h-full" /> {/* Image will fill the height of its container */}
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-2 py-1">
             {cartItemCount}
           </span>
-          <span className="align-middle">Basket</span>
+          <span className="ml-2 flex items-center -mt-3 text-sm">Basket</span>
         </div>
       </div>
     </nav>
