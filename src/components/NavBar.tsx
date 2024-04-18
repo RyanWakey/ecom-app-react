@@ -26,8 +26,8 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount }) => {
       </div>
 
        {/* Profile and Basket Icon */}
-      <div className="flex items-center">
-        <a href="/login" className="hover:underline">Login</a>
+      <div className="flex items-center mr-2">
+        <a href="/login" className="hover:underline mr-4">Login</a>
         <div className="relative h-10"> {/* Set the height of the container for the basket image */}
           <img src="/images/CartIcon.png" alt="Basket" className="h-full" /> {/* Image will fill the height of its container */}
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-2 py-1">
