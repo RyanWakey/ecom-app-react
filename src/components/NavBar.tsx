@@ -20,8 +20,8 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount }) => {
       <div className="flex border border-gray-500 rounded overflow-hidden text-sm">
         <Dropdown options={categoryOptions} />
         <input className="px-48 w-full text-xs" type="text" placeholder="Search Emazon.co.uk" />
-        <button className="bg-orange-400 px-4 py-2">
-          {/* Search Icon */}
+        <button className="bg-yellow-500 px-2 py-2">
+          <img src="/images/MagnifyingGlass.png" alt="Search" className="h-6 w-10" />
         </button>
       </div>
 
