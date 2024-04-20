@@ -1,17 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage';
-import ProductDetails from './components/ProductDetails'; // You will need to create this component
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={Homepage} />
-        <Route path="/product/:id" component={ProductDetails} />
-        {}
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+      </Routes>
     </Router>
   );
 }
