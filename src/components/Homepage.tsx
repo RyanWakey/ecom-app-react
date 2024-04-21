@@ -19,7 +19,6 @@ const Homepage = () => {
 
   return (
     <>
-      <Navbar cartItemCount={0} />
       <div className="container mx-auto mt-4">
         <div className="grid grid-cols-4 gap-4">
           {products.map(product => (
