@@ -29,7 +29,8 @@ const ProductDetails: React.FC = () => {
 
   
     return (
-      <div className="container mx-auto mt-10 flex flex-col md:flex-row">
+      <div className="container mx-auto mt-10 flex flex-col md:flex-row md:space-x-4">
+        <div className="flex-grow-0 flex-shrink-0 w-1/12 hidden md:block"></div>
         {/* Image container */}
         <div className="md:flex md:w-1/3">
           <img src={imageUrl} alt={product.name} className="w-full h-auto object-contain mx-auto" />
@@ -39,13 +40,13 @@ const ProductDetails: React.FC = () => {
         <div className="flex-1 px-4">
           <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
           <p className="mb-3">{product.description}</p>
-          <p className="mb-3">Price: ${product.price}</p>
+          <p className="mb-3">Price: £{product.price}</p>
           <p className="mb-3">Stock: {product.stock}</p>
         </div>
   
         {/* Buying options container */}
-        <div className="md:w-1/4 p-6">
-          <div className="mb-3 text-xl font-bold">${product.price}</div>
+        <div className="md:w-1/5 p-4 border border-gray-300 rounded-lg shadow-sm bg-white0">
+          <div className="mb-3 text-xl font-bold">£{product.price}</div>
           <div className="mb-3">FREE Returns</div>
           <div className="mb-3">In Stock</div>
           <div className="mb-3">
