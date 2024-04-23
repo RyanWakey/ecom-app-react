@@ -39,7 +39,11 @@ const ProductDetails: React.FC = () => {
         {/* Product information container */}
         <div className="flex-1 px-4">
           <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
-          <p className="mb-3">{product.description}</p>
+          <div className="mb-3">
+            {product.description.split("\n\n").map((paragraph, index) => (
+              <p key={index}>{paragraph.trim()}</p>
+            ))}
+          </div>
           <p className="mb-3">Price: £{product.price}</p>
           <p className="mb-3">Stock: {product.stock}</p>
         </div>
