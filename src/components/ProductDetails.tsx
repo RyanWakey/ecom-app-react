@@ -29,7 +29,7 @@ const ProductDetails: React.FC = () => {
 
   
     return (
-      <div className="container mx-auto mt-10 flex flex-col md:flex-row md:space-x-4">
+      <div className="md:container mx-auto mt-10 flex flex-col md:flex-row">
         <div className="flex-grow-0 flex-shrink-0 w-1/12 hidden md:block"></div>
         {/* Image container */}
         <div className="md:flex md:w-1/3">
@@ -39,17 +39,18 @@ const ProductDetails: React.FC = () => {
         {/* Product information container */}
         <div className="flex-1 px-4">
           <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
+          <p className="mb-3 font-">£{product.price}</p>
           <div className="mb-3">
-            {product.description.split("\n\n").map((paragraph, index) => (
-              <p key={index}>{paragraph.trim()}</p>
-            ))}
+            <ul className="list-disc ml-5 space-y-2">
+              {product.description.split("\n\n").map((paragraph, index) => (
+                <li key={index} className="text-sm">{paragraph.trim()}</li>
+              ))}
+            </ul>
           </div>
-          <p className="mb-3">Price: £{product.price}</p>
-          <p className="mb-3">Stock: {product.stock}</p>
         </div>
-  
+        
         {/* Buying options container */}
-        <div className="md:w-1/5 p-4 border border-gray-300 rounded-lg shadow-sm bg-white0">
+        <div className="lg:w-1/6 p-6 border-2 border-gray-300 lg:ml-auto">
           <div className="mb-3 text-xl font-bold">£{product.price}</div>
           <div className="mb-3">FREE Returns</div>
           <div className="mb-3">In Stock</div>
@@ -60,14 +61,15 @@ const ProductDetails: React.FC = () => {
 
             </select>
           </div>
-          <div className="flex flex-col space-y-2 my-4">
+          
+          <div className="flex flex-col space-y-4 my-4">
             <button className="bg-yellow-400 text-black py-2 px-4 rounded">Add to Basket</button>
             <button className="bg-yellow-600 text-white py-2 px-4 rounded">Buy Now</button>
           </div>
           <p>Dispatches from Emazon</p>
           <p>Sold by Emazon</p>
-
         </div>
+        
       </div>
     );
   };
