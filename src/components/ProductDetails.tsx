@@ -29,17 +29,19 @@ const ProductDetails: React.FC = () => {
 
   
     return (
-      <div className="md:container mx-auto mt-10 flex flex-col md:flex-row">
-        <div className="flex-grow-0 flex-shrink-0 w-1/12 hidden md:block"></div>
+      <div className="flex flex-col lg:flex-row mt-10 mx-4 ">
+        {/* Placeholder for additional images (simulated with padding) */}
+        <div className="w-0 lg:w-1/12 xl:w-1/6 2xl:w-1/4 flex-shrink-0"></div>
+    
         {/* Image container */}
-        <div className="md:flex md:w-1/3">
-          <img src={imageUrl} alt={product.name} className="w-full h-auto object-contain mx-auto" />
+        <div className="lg:w-2/5 xl:w-1/3 2xl:w-2/6 flex-shrink-0">
+          <img src={imageUrl} alt={product.name} className="w-full h-auto object-contain" />
         </div>
-  
+    
         {/* Product information container */}
-        <div className="flex-1 px-4">
+        <div className="flex-grow lg:w-1/3 xl:w-1/4 2xl:w-1/6 px-4 lg:px-8 lg:-ml-6">
           <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
-          <p className="mb-3 font-">£{product.price}</p>
+          <p className="mb-3">£{product.price}</p>
           <div className="mb-3">
             <ul className="list-disc ml-5 space-y-2">
               {product.description.split("\n\n").map((paragraph, index) => (
@@ -50,7 +52,7 @@ const ProductDetails: React.FC = () => {
         </div>
         
         {/* Buying options container */}
-        <div className="lg:w-1/6 p-6 border-2 border-gray-300 lg:ml-auto">
+        <div className="lg:w-1/4 xl:w-1/6 2xl:w-1/6 lg:ml-auto p-6 border-2 border-gray-300">
           <div className="mb-3 text-xl font-bold">£{product.price}</div>
           <div className="mb-3">FREE Returns</div>
           <div className="mb-3">In Stock</div>
@@ -58,7 +60,6 @@ const ProductDetails: React.FC = () => {
             Quantity:
             <select className="ml-2">
               <option value="1">1</option>
-
             </select>
           </div>
           
@@ -69,9 +70,9 @@ const ProductDetails: React.FC = () => {
           <p>Dispatches from Emazon</p>
           <p>Sold by Emazon</p>
         </div>
-        
       </div>
     );
+    
   };
   
   export default ProductDetails;
