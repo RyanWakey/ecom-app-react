@@ -54,23 +54,37 @@ const ProductDetails: React.FC = () => {
         {/* Buying options container */}
         <div className="lg:w-1/4 xl:w-1/6 2xl:w-1/6 lg:ml-auto p-6 border-2 border-gray-300">
           <div className="mb-3 text-xl font-bold">£{product.price}</div>
-          <div className="mb-3">FREE Returns</div>
-          <div className="mb-3">In Stock</div>
-          <div className="mb-3">
-            Quantity:
-            <select className="ml-2">
-              <option value="1">1</option>
-            </select>
+            {product.stock > 0 ? (
+              <div className="text-green-500">In Stock</div>
+            ) : (
+              <div className="text-red-500">Out of Stock</div>
+            )}
+
+            <div className="mb-3">
+              Quantity:
+              <select className="ml-2" disabled={!product.stock}>
+                <option value="1">1</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col space-y-4 my-4">
+              <button className="bg-yellow-400 text-black py-2 px-4 rounded" disabled={!product.stock}>Add to Basket</button>
+              <button className="bg-yellow-600 text-white py-2 px-4 rounded" disabled={!product.stock}>Buy Now</button>
+            </div>
+
+            <div className="mb-3">
+              <span className="icon-placeholder">🏠</span>
+              Deliver to {/* </div>{user.username} - {user.address} */ }
+            </div>
+
+            <div className="text-sm">
+              <p>Returns</p>
+              <p>Returnable within 30 days of receipt</p>
+              <p>Payment</p>
+              <p>Secure transaction</p>
+            </div>
           </div>
-          
-          <div className="flex flex-col space-y-4 my-4">
-            <button className="bg-yellow-400 text-black py-2 px-4 rounded">Add to Basket</button>
-            <button className="bg-yellow-600 text-white py-2 px-4 rounded">Buy Now</button>
-          </div>
-          <p>Dispatches from Emazon</p>
-          <p>Sold by Emazon</p>
         </div>
-      </div>
     );
     
   };
