@@ -29,17 +29,17 @@ const ProductDetails: React.FC = () => {
 
   
     return (
-      <div className="flex flex-col lg:flex-row mt-10 mx-4 ">
+      <div className="flex flex-col lg:flex-row mt-10 mx-4">
         {/* Placeholder for additional images (simulated with padding) */}
-        <div className="w-0 lg:w-1/12 xl:w-1/6 2xl:w-1/4 flex-shrink-0"></div>
+        <div className="w-0 lg:w-1/12 xl:w-1/7 flex-shrink-0"></div>
     
         {/* Image container */}
-        <div className="lg:w-2/5 xl:w-1/3 2xl:w-2/6 flex-shrink-0">
+        <div className="lg:w-2/5 xl:w-1/3 mr-10 flex-shrink-0">
           <img src={imageUrl} alt={product.name} className="w-full h-auto object-contain" />
         </div>
     
         {/* Product information container */}
-        <div className="flex-grow lg:w-1/3 xl:w-1/4 2xl:w-1/6 px-4 lg:px-8 lg:-ml-6">
+        <div className="flex-grow lg:w-1/3 xl:w-1/4 px-4 lg:-ml-6">
           <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
           <p className="mb-3">£{product.price}</p>
           <div className="mb-3">
