@@ -5,17 +5,21 @@ import ProductDetails from './components/ProductDetails';
 import Navbar from './components/NavBar'; 
 import Footer from './components/Footer';
 
-function App() {
+const App = () => {
   return (
     <Router>
-    <Navbar cartItemCount={0} />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Navbar cartItemCount={0} />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
-}
+};
 
 export default App;
