@@ -52,7 +52,7 @@ const ProductDetails: React.FC = () => {
         </div>
         
         {/* Buying options container */}
-        <div className="lg:w-1/4 xl:w-1/6 2xl:w-1/6 lg:ml-auto p-6 border-2 border-gray-300">
+        <div className="lg:w-1/4 xl:w-1/6 2xl:w-1/6 lg:ml-auto p-6 border border-gray-300 rounded-lg">
           <div className="mb-3 text-xl font-bold">£{product.price}</div>
             {product.stock > 0 ? (
               <div className="text-green-500">In Stock</div>
