@@ -52,10 +52,15 @@ const ProductDetails: React.FC = () => {
         </div>
         
         {/* Buying options container */}
-        <div className="lg:w-1/4 xl:w-1/6 2xl:w-1/6 lg:ml-auto p-6 border border-gray-300 rounded-lg">
+        <div className="mt-12 lg:w-1/4 xl:w-1/6 2xl:w-1/6 lg:ml-auto p-6 border border-gray-300 rounded-lg">
           <div className="mb-3 text-xl font-bold">£{product.price}</div>
+
+          <div className="text-xs text-gray-700 mb-1">
+            Or fastest delivery Tomorrow, date Month. Order within hours mins. <a href="#" className="text-blue-600">Details</a>
+          </div>
+          
             {product.stock > 0 ? (
-              <div className="text-green-500">In Stock</div>
+               <div className="text-green-500 mb-1">In Stock</div>
             ) : (
               <div className="text-red-500">Out of Stock</div>
             )}
@@ -77,11 +82,11 @@ const ProductDetails: React.FC = () => {
               Deliver to {/* </div>{user.username} - {user.address} */ }
             </div>
 
-            <div className="text-sm">
-              <p>Returns</p>
-              <p>Returnable within 30 days of receipt</p>
-              <p>Payment</p>
-              <p>Secure transaction</p>
+            <div className="text-sm text-gray-600">
+              <p className="mb-1">Dispatches from <span className="text-black">Amazon</span></p>
+              <p className="mb-1">Sold by <span className="text-black">Fusion5 Direct</span></p>
+              <p className="mb-1">Returns <span className="text-black">Returnable within 30 days of receipt</span></p>
+              <p className="mb-1">Payment <span className="text-black">Secure transaction</span></p>
             </div>
           </div>
         </div>
