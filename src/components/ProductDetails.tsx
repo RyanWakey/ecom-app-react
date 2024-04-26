@@ -6,12 +6,16 @@ import { Product } from '../types';
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Destructure and type the ID
   const [product, setProduct] = useState<Product | null>(null);
+  const [currentImage, setCurrentImage] = useState('');
+  
 
   useEffect(() => {
     if (id) {
       axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/products/${id}`)
         .then(response => {
           setProduct(response.data);
+           // Set first image as the main image to start with
+          setCurrentImage(response.data.images[0]);
         })
         .catch(error => {
           console.error('Error fetching product:', error);
@@ -19,6 +23,7 @@ const ProductDetails: React.FC = () => {
     }
   }, [id]);
 
+  // Return early if the product is not yet loaded
   if (!product) {
     return <div className="text-center">Loading...</div>;
   }
