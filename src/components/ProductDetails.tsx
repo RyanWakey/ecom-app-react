@@ -6,16 +6,16 @@ import { Product } from '../types';
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Destructure and type the ID
   const [product, setProduct] = useState<Product | null>(null);
-  const [currentImage, setCurrentImage] = useState('');
+  const [currentImage, setCurrentImage] = useState<string>('');
   
 
-  useEffect(() => {
+   useEffect(() => {
     if (id) {
       axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/products/${id}`)
         .then(response => {
           setProduct(response.data);
-           // Set first image as the main image to start with
-          setCurrentImage(response.data.images[0]);
+          // Set the first image as the main image to start with
+          setCurrentImage(response.data.images.length > 0 ? response.data.images[0] : 'path_to_default_image.jpg'); // Ensure a default image is used if no images are available
         })
         .catch(error => {
           console.error('Error fetching product:', error);
@@ -28,33 +28,26 @@ const ProductDetails: React.FC = () => {
     return <div className="text-center">Loading...</div>;
   }
 
-  const imageUrl = product.imageUrl.startsWith('http')
-    ? product.imageUrl
-    : `${process.env.REACT_APP_API_BASE_URL}${product.imageUrl}`;
+ 
+  return (
+    <div className="flex flex-col lg:flex-row mt-10 mx-4">
+      {/* Image container */}
+      <div className="lg:w-2/5 xl:w-1/3 mr-10 flex-shrink-0">
+        <img src={currentImage} alt={product.name} className="w-full h-auto object-contain" />
+      </div>
 
-  
-    return (
-      <div className="flex flex-col lg:flex-row mt-10 mx-4">
-        {/* Placeholder for additional images (simulated with padding) */}
-        <div className="w-0 lg:w-1/12 xl:w-1/7 flex-shrink-0"></div>
-    
-        {/* Image container */}
-        <div className="lg:w-2/5 xl:w-1/3 mr-10 flex-shrink-0">
-          <img src={imageUrl} alt={product.name} className="w-full h-auto object-contain" />
+      {/* Product information container */}
+      <div className="flex-grow lg:w-1/3 xl:w-1/4 px-4 lg:-ml-6">
+        <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
+        <p className="mb-3">£{product.price}</p>
+        <div className="mb-3">
+          <ul className="list-disc ml-5 space-y-2">
+            {product.description.split("\n\n").map((paragraph, index) => (
+              <li key={index} className="text-sm">{paragraph.trim()}</li>
+            ))}
+          </ul>
         </div>
-    
-        {/* Product information container */}
-        <div className="flex-grow lg:w-1/3 xl:w-1/4 px-4 lg:-ml-6">
-          <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
-          <p className="mb-3">£{product.price}</p>
-          <div className="mb-3">
-            <ul className="list-disc ml-5 space-y-2">
-              {product.description.split("\n\n").map((paragraph, index) => (
-                <li key={index} className="text-sm">{paragraph.trim()}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
+      </div>
         
         {/* Buying options container */}
         <div className="mt-12 lg:w-1/4 xl:w-1/6 2xl:w-1/6 lg:ml-auto p-6 border border-gray-300 rounded-lg">
