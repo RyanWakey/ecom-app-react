@@ -12,6 +12,7 @@ const Homepage = () => {
   useEffect(() => {
     axios.get(`${baseUrl}/api/products`)
       .then(response => {
+        console.log("Fetched products:", response.data);
         setProducts(response.data as Product[]);
       })
       .catch(error => console.error('Error fetching products:', error));
