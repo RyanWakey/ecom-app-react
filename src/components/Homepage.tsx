@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './NavBar';
 import ProductCard from './ProductCard';
 import axios from 'axios';
 import { Product } from '../types';

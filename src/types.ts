@@ -1,3 +1,9 @@
+interface Image {
+    id: number;
+    url: string;
+    product_id: number;
+}
+
 export type Product = {
 
     id: number;
@@ -5,7 +11,7 @@ export type Product = {
     description: string;
     price: number;
     stock: number;
-    images: string[]; 
+    images: Image[]; 
     category_id: number;
 
 }

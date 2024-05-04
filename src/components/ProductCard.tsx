@@ -7,10 +7,10 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  // Choose the first image if available, otherwise provide a fallback URL
+  // Assume images is an array of objects, and we are accessing the 'url' property
   const imageUrl = product.images.length > 0
-    ? (product.images[0].startsWith('http') ? product.images[0] : `${process.env.REACT_APP_API_BASE_URL}${product.images[0]}`)
-    : 'Emazon.png'; 
+    ? (product.images[0].url.startsWith('http') ? product.images[0].url : `${process.env.REACT_APP_API_BASE_URL}${product.images[0].url}`)
+    : '/path/to/default/image/Emazon.png';  // Provide a default image path if no images exist
 
   return (
     <div className="border-2 border-gray-300 p-4 flex flex-col items-center justify-between h-full">
