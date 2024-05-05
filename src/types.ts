@@ -1,4 +1,4 @@
-interface Image {
+interface ProductImage {
     id: number;
     url: string;
     product_id: number;
@@ -11,7 +11,7 @@ export type Product = {
     description: string;
     price: number;
     stock: number;
-    images: Image[]; 
+    images: ProductImage[]; 
     category_id: number;
 
 }

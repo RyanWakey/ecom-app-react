@@ -9,15 +9,21 @@ const ProductDetails: React.FC = () => {
   const [currentImage, setCurrentImage] = useState<string>('');
   
 
-   useEffect(() => {
+  useEffect(() => {
     if (id) {
-      axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/products/${id}`)
-        .then(response => {
-          setProduct(response.data);
+      axios
+        .get(`${process.env.REACT_APP_API_BASE_URL}/api/products/${id}`)
+        .then((response) => {
+          const productData = response.data as Product;
+          setProduct(productData);
           // Set the first image as the main image to start with
-          setCurrentImage(response.data.images.length > 0 ? response.data.images[0] : 'path_to_default_image.jpg'); // Ensure a default image is used if no images are available
+          setCurrentImage(
+            productData.images.length > 0
+              ? productData.images[0].url
+              : 'Emazon.png' // Default image path
+          );
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error fetching product:', error);
         });
     }
