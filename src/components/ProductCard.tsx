@@ -7,9 +7,10 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const imageUrl = product.images.length > 0
-    ? (product.images[0].url.startsWith('http') ? product.images[0].url : `${process.env.REACT_APP_API_BASE_URL}${product.images[0].url}`)
-    : '/path/to/default/image/Emazon.png';
+  
+const imageUrl = product.images.length > 0
+  ? (product.images[0].url.startsWith('http') ? product.images[0].url : `${process.env.REACT_APP_API_BASE_URL}${product.images[0].url}`)
+  : 'default-image.png'; // Use a fallback default image
 
   const price = parseFloat(product.price.toString());
 

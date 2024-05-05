@@ -16,12 +16,14 @@ const ProductDetails: React.FC = () => {
         .then((response) => {
           const productData = response.data as Product;
           setProduct(productData);
-          // Set the first image as the main image to start with
-          setCurrentImage(
-            productData.images.length > 0
+          // Set the first image or a default
+          const firstImage = productData.images.length > 0
+            ? productData.images[0].url.startsWith('http')
               ? productData.images[0].url
-              : 'Emazon.png' // Default image path
-          );
+              : `${process.env.REACT_APP_API_BASE_URL}${productData.images[0].url}`
+            : 'default-image.png'; // Default image
+  
+          setCurrentImage(firstImage);
         })
         .catch((error) => {
           console.error('Error fetching product:', error);
