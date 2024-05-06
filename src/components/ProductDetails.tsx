@@ -3,20 +3,24 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Product } from '../types';
 
+const getFullImageUrl = (url: string): string => {
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
+  if (baseUrl && url.startsWith('/')) {
+    return `${baseUrl.replace(/\/$/, '')}${url}`;
+  }
+  return url;
+};
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Destructure and type the ID
   const [product, setProduct] = useState<Product | null>(null);
   const [currentImage, setCurrentImage] = useState<string>('');
+  const [thumbnails, setThumbnails] = useState<string[]>([]);
   
-  const getFullImageUrl = (url: string): string => {
-    return url.startsWith('http') ? url : `${process.env.REACT_APP_API_BASE_URL}${url}`;
-  };
-
   const changeImage = (newImage: string) => {
     setCurrentImage(getFullImageUrl(newImage));
   };
-
+  
   useEffect(() => {
     if (id) {
       axios
@@ -24,14 +28,16 @@ const ProductDetails: React.FC = () => {
         .then((response) => {
           const productData = response.data as Product;
           setProduct(productData);
+
           // Set the first image or a default
           const firstImage = productData.images.length > 0
-            ? productData.images[0].url.startsWith('http')
-              ? productData.images[0].url
-              : `${process.env.REACT_APP_API_BASE_URL}${productData.images[0].url}`
-            : 'Emazon.png'; // Default image
-  
+            ? getFullImageUrl(productData.images[0].url)
+            : 'Emazon.png';
           setCurrentImage(firstImage);
+
+          // Prepare thumbnails URLs
+          const thumbnailUrls = productData.images.map((img) => getFullImageUrl(img.url));
+          setThumbnails(thumbnailUrls);
         })
         .catch((error) => {
           console.error('Error fetching product:', error);
@@ -49,20 +55,20 @@ const ProductDetails: React.FC = () => {
     <div className="flex flex-col lg:flex-row mt-10 mx-4">
       
       {/* Thumbnails (Left or Below) */}
-      <div className="flex flex-col space-y-10">
-        {product.images.map((img, idx) => (
+      <div className="flex flex-col space-y-12 mt-10 ml-4">
+        {thumbnails.map((url, idx) => (
           <img
             key={idx}
-            src={img.url}
+            src={url}
             alt={`Thumbnail ${idx}`}
             className="w-12 h-12 object-cover border border-gray-200 cursor-pointer"
-            onMouseOver={() => changeImage(img.url)}
+            onMouseOver={() => changeImage(url)}
           />
         ))}
       </div>
 
       {/* Main Image */}
-      <div className="flex-grow lg:w-3/5 xl:w-1/3">
+      <div className="flex-grow lg:w-3/5 xl:w-1/5">
         <img
           src={currentImage}
           alt={product.name}
