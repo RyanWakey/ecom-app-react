@@ -3,13 +3,18 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Product } from '../types';
 
+
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Destructure and type the ID
   const [product, setProduct] = useState<Product | null>(null);
   const [currentImage, setCurrentImage] = useState<string>('');
   
+  const getFullImageUrl = (url: string): string => {
+    return url.startsWith('http') ? url : `${process.env.REACT_APP_API_BASE_URL}${url}`;
+  };
+
   const changeImage = (newImage: string) => {
-    setCurrentImage(newImage);
+    setCurrentImage(getFullImageUrl(newImage));
   };
 
   useEffect(() => {
@@ -24,7 +29,7 @@ const ProductDetails: React.FC = () => {
             ? productData.images[0].url.startsWith('http')
               ? productData.images[0].url
               : `${process.env.REACT_APP_API_BASE_URL}${productData.images[0].url}`
-            : 'default-image.png'; // Default image
+            : 'Emazon.png'; // Default image
   
           setCurrentImage(firstImage);
         })
