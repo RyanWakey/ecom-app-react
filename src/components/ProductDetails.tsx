@@ -8,7 +8,7 @@ const ProductDetails: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [currentImage, setCurrentImage] = useState<string>('');
   
-  const changeImage = (newImage) => {
+  const changeImage = (newImage: string) => {
     setCurrentImage(newImage);
   };
 
@@ -42,11 +42,29 @@ const ProductDetails: React.FC = () => {
  
   return (
     <div className="flex flex-col lg:flex-row mt-10 mx-4">
-      {/* Image container */}
-      <div className="lg:w-2/5 xl:w-1/3 mr-10 flex-shrink-0">
-        <img src={currentImage} alt={product.name} className="w-128 h-80 object-contain mx-auto mt-10" />
+      
+      {/* Thumbnails (Left or Below) */}
+      <div className="flex flex-col space-y-10">
+        {product.images.map((img, idx) => (
+          <img
+            key={idx}
+            src={img.url}
+            alt={`Thumbnail ${idx}`}
+            className="w-12 h-12 object-cover border border-gray-200 cursor-pointer"
+            onMouseOver={() => changeImage(img.url)}
+          />
+        ))}
       </div>
 
+      {/* Main Image */}
+      <div className="flex-grow lg:w-3/5 xl:w-1/3">
+        <img
+          src={currentImage}
+          alt={product.name}
+          className="w-128 h-80 object-contain mx-auto mt-10"
+        />
+      </div>
+      
       {/* Product information container */}
       <div className="flex-grow lg:w-1/3 xl:w-1/4 px-4 lg:-ml-6">
         <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
