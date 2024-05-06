@@ -8,6 +8,9 @@ const ProductDetails: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [currentImage, setCurrentImage] = useState<string>('');
   
+  const changeImage = (newImage) => {
+    setCurrentImage(newImage);
+  };
 
   useEffect(() => {
     if (id) {
@@ -41,7 +44,7 @@ const ProductDetails: React.FC = () => {
     <div className="flex flex-col lg:flex-row mt-10 mx-4">
       {/* Image container */}
       <div className="lg:w-2/5 xl:w-1/3 mr-10 flex-shrink-0">
-        <img src={currentImage} alt={product.name} className="w-full h-auto object-contain" />
+        <img src={currentImage} alt={product.name} className="w-128 h-80 object-contain mx-auto mt-10" />
       </div>
 
       {/* Product information container */}
