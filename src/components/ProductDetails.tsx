@@ -55,16 +55,21 @@ const ProductDetails: React.FC = () => {
     <div className="flex flex-col lg:flex-row mt-10 mx-4">
       
       {/* Thumbnails (Left or Below) */}
-      <div className="flex flex-col space-y-12 mt-10 ml-4">
-        {thumbnails.map((url, idx) => (
-          <img
-            key={idx}
-            src={url}
-            alt={`Thumbnail ${idx}`}
-            className="w-12 h-12 object-cover border border-gray-200 cursor-pointer"
-            onMouseOver={() => changeImage(url)}
-          />
-        ))}
+      <div className="flex flex-col space-y-2 mt-6 ml-4">
+        {thumbnails.map((url, idx) => {
+          const isActive = url === currentImage;
+          return (
+            <img
+              key={idx}
+              src={url}
+              alt={`Thumbnail ${idx}`}
+              className={`w-12 h-12 object-contain border cursor-pointer ${
+                isActive ? 'ring-2 ring-blue-500 shadow-lg' : 'border-gray-300'
+              }`}
+              onMouseOver={() => changeImage(url)}
+            />
+          );
+        })}
       </div>
 
       {/* Main Image */}
