@@ -28,12 +28,6 @@ const SecondaryNav: React.FC = () => {
             <a href="/browsing-history" className="hover:text-yellow-500">Browsing History</a>
           </nav>
         </div>
-
-        {/* Example User Account Section */}
-        <div className="hidden lg:flex items-center">
-          <span className="mr-2">Hello, User</span>
-          <a href="/account" className="hover:text-yellow-500">Account</a>
-        </div>
       </header>
 
       {/* Drawer/Sidebar */}
