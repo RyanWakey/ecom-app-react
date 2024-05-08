@@ -2,20 +2,16 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import ProductDetails from './components/ProductDetails';
-import Navbar from './components/TopNavBar'; 
-import SecondaryNav from './components/SecondaryNav'; 
+import Header from './components/Header';
 import Footer from './components/Footer';
 
 const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        {/* Existing Top Navigation Bar */}
-        <Navbar cartItemCount={0} />
-
-        {/* New Secondary Navigation Bar */}
-        <SecondaryNav />
-
+        {/* Header across all pages */}
+        <Header cartItemCount={0} />
+        
         {/* Main Content */}
         <div className="flex-grow">
           <Routes>
