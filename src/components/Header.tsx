@@ -16,18 +16,18 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
   return (
     <header>
       {/* Top Navigation Bar */}
-      <nav className="bg-gray-900 p-1 py-2 text-white flex justify-between items-center">
+      <nav style={{backgroundColor: '#131921' }} className="p-1.5 text-white flex justify-between items-center">
         {/* Company Logo */}
         <div className="flex items-center">
           <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" />
         </div>
 
         {/* Search Bar and Category Dropdown */}
-        <div className="flex border border-gray-500 rounded overflow-hidden text-sm">
+        <div className="flex border border-gray-500 rounded overflow-hidden text-sm ml-12">
           <Dropdown options={categoryOptions} />
-          <input className="px-48 w-full text-xs" type="text" placeholder="Search Emazon.co.uk" />
-          <button className="bg-yellow-500 px-2 py-2">
-            <img src="/images/MagnifyingGlass.png" alt="Search" className="h-6 w-10" />
+          <input className="px-72 py-1 text-xs w-full" type="text" placeholder="Search Emazon.co.uk" />
+          <button className="bg-yellow-500 px-2.5 py-1">
+            <img src="/images/MagnifyingGlass.png" alt="Search" className="h-4 w-8" />
           </button>
         </div>
 
@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           <a href="/login" className="hover:underline mr-4">Login</a>
           <div className="relative h-10">
             <img src="/images/CartIcon.png" alt="Basket" className="h-full" />
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-2 py-1">
+            <span className="absolute -top-0.5 -right-1 bg-red-500 text-white text-xs rounded-full px-2 py-1">
               {cartItemCount}
             </span>
             <span className="ml-2 flex items-center -mt-3 text-sm">Basket</span>
@@ -47,17 +47,18 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 
       {/* Secondary Navigation Bar */}
       <div className="flex justify-between items-center p-1.5 bg-gray-800 text-white">
-        <div className="flex items-center">
+        <div className="flex items-center ml-4">
           {/* Drawer Toggle */}
           <button
             onClick={toggleDrawer}
-            className="mr-4 p-2 rounded bg-gray-700 hover:bg-gray-600 focus:outline-none lg:hidden"
+            className="mr-4 focus:outline-none"
           >
-            <span>☰</span> {/* Hamburger Icon */}
+            {/* Hamburger Icon */}
+            <span className="mr-1 text-base text-white font-bold">☰ All</span> 
           </button>
 
           {/* Secondary Navigation Links */}
-          <nav className="hidden lg:flex space-x-6">
+          <nav className="hidden lg:flex space-x-3 text-sm font-semibold text-white text-opacity-85">
             <a href="/deals" className="hover:text-yellow-500">Today's Deals</a>
             <a href="/buy-again" className="hover:text-yellow-500">Buy Again</a>
             <a href="/browsing-history" className="hover:text-yellow-500">Browsing History</a>
