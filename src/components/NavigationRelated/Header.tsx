@@ -1,5 +1,6 @@
 // Header.tsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 
 // Interface for props
@@ -62,9 +63,10 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 
           {/* Secondary Navigation Links */}
           <nav className="flex space-x-3 text-sm font-semibold text-white text-opacity-80 ml-10">
-            <a href="/deals" className="hover:text-yellow-500">Today's Deals</a>
-            <a href="/buy-again" className="hover:text-yellow-500">Buy Again</a>
-            <a href="/browsing-history" className="hover:text-yellow-500">Browsing History</a>
+            <Link to="/deals" className="hover:text-yellow-500">Today's Deals</Link>
+            <Link to="/buy-again" className="hover:text-yellow-500">Buy Again</Link>
+            <Link to="/browsing-history" className="hover:text-yellow-500">Browsing History</Link>
+            <Link to="/products" className="hover:text-yellow-500">Products</Link>
           </nav>
         </div>
       </div>
@@ -80,9 +82,9 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
         >
           <h2 className="text-lg font-bold mb-4">Menu</h2>
           <nav className="flex flex-col space-y-2">
-            <a href="/deals" className="hover:text-blue-500">Today's Deals</a>
-            <a href="/buy-again" className="hover:text-blue-500">Buy Again</a>
-            <a href="/browsing-history" className="hover:text-blue-500">Browsing History</a>
+            <Link to="/deals" className="hover:text-blue-500">Today's Deals</Link>
+            <Link to="/buy-again" className="hover:text-blue-500">Buy Again</Link>
+            <Link to="/browsing-history" className="hover:text-blue-500">Browsing History</Link>
           </nav>
         </div>
       </div>

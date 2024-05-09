@@ -1,9 +1,12 @@
+// App.tsx
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage';
-import ProductDetails from './components/ProductDetails';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import ProductDetails from './components/ProductComponents/ProductDetails';
+import AllProductsPage from './components/ProductComponents/AllProductsPage';
+import Header from './components/NavigationRelated/Header';
+import Footer from './components/NavigationRelated/Footer';
 
 const App = () => {
   return (
@@ -17,6 +20,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/products" element={<AllProductsPage />} /> 
           </Routes>
         </div>
 
@@ -26,6 +30,5 @@ const App = () => {
     </Router>
   );
 };
-
 
 export default App;
