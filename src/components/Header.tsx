@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           </button>
 
           {/* Secondary Navigation Links */}
-          <nav className="flex space-x-3 text-sm font-semibold text-white ml-10">
+          <nav className="flex space-x-3 text-sm font-semibold text-white text-opacity-80 ml-10">
             <a href="/deals" className="hover:text-yellow-500">Today's Deals</a>
             <a href="/buy-again" className="hover:text-yellow-500">Buy Again</a>
             <a href="/browsing-history" className="hover:text-yellow-500">Browsing History</a>

@@ -7,15 +7,14 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  
-const imageUrl = product.images.length > 0
-  ? (product.images[0].url.startsWith('http') ? product.images[0].url : `${process.env.REACT_APP_API_BASE_URL}${product.images[0].url}`)
-  : 'default-image.png'; // Use a fallback default image
+  const imageUrl = product.images.length > 0
+    ? (product.images[0].url.startsWith('http') ? product.images[0].url : `${process.env.REACT_APP_API_BASE_URL}${product.images[0].url}`)
+    : 'default-image.png'; // Fallback default image
 
   const price = parseFloat(product.price.toString());
 
   return (
-    <div className="border-2 border-gray-300 p-4 flex flex-col items-center justify-between h-full">
+    <div className="p-4 flex flex-col items-center justify-between h-full border-b border-r border-gray-500">
       <Link to={`/product/${product.id}`}>
         <img src={imageUrl} alt={product.name} className="h-40 w-full object-contain mb-2" />
       </Link>
