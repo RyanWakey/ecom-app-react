@@ -49,16 +49,19 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
       <div className="flex justify-between items-center p-1.5 bg-gray-800 text-white">
         <div className="flex items-center ml-4">
           {/* Drawer Toggle */}
-          <button
-            onClick={toggleDrawer}
-            className="mr-4 focus:outline-none"
-          >
+          <button onClick={toggleDrawer} className="relative flex items-center focus:outline-none">
             {/* Hamburger Icon */}
-            <span className="mr-1 text-base text-white font-bold">☰ All</span> 
+            <div className="flex flex-col items-start space-y-1">
+              <span className="block w-4 h-0.5 bg-white"></span>
+              <span className="block w-4 h-0.5 bg-white"></span>
+              <span className="block w-4 h-0.5 bg-white"></span>
+            </div>
+            {/* All Text */}
+            <span className="absolute left-5 top-1/2 transform -translate-y-1/2 text-sm text-white font-bold">All</span>
           </button>
 
           {/* Secondary Navigation Links */}
-          <nav className="hidden lg:flex space-x-3 text-sm font-semibold text-white text-opacity-85">
+          <nav className="flex space-x-3 text-sm font-semibold text-white ml-10">
             <a href="/deals" className="hover:text-yellow-500">Today's Deals</a>
             <a href="/buy-again" className="hover:text-yellow-500">Buy Again</a>
             <a href="/browsing-history" className="hover:text-yellow-500">Browsing History</a>
