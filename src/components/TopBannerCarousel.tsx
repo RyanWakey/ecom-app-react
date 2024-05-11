@@ -1,19 +1,22 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 import 'swiper/css'; 
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/css/navigation'; 
+import 'swiper/css/pagination'; 
 import 'swiper/css/autoplay'; 
+
 
 const banners = [
     { src: '/images/JoinEmazonPrimeBanner.png', alt: 'First Banner' },
     { src: '/images/JoinEmazonPrimeBanner.png', alt: 'Second Banner' },
 ];
-  
 
 const TopBannerCarousel = () => {
     return (
       <Swiper
+        modules={[Navigation, Pagination, Autoplay]} // Initialize the modules
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 8000, disableOnInteraction: false }}
