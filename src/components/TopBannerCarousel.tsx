@@ -9,14 +9,15 @@ import 'swiper/css/autoplay';
 
 
 const banners = [
-    { src: '/images/JoinEmazonPrimeBanner.png', alt: 'First Banner' },
-    { src: '/images/JoinEmazonPrimeBanner.png', alt: 'Second Banner' },
+    { src: '/images/TheBoysADBanner.jpg', alt: 'First Banner' },
+    { src: '/images/JoinEmazonPrimeBanner.jpg', alt: 'Second Banner' },
 ];
 
 const TopBannerCarousel = () => {
+    console.log("Rendering Swiper with banners:", banners);
     return (
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]} // Initialize the modules
+        modules={[Navigation, Pagination, Autoplay]}
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 8000, disableOnInteraction: false }}
