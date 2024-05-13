@@ -1,0 +1,22 @@
+.swiperButtonNext, .swiperButtonPrev {
+    color: #000000;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.swiperButtonNext {
+    right: 10px;
+    background-position: center;
+}
+
+.swiperButtonPrev {
+    left: 10px;
+    background-position: center;
+}
+
+.swiperPagination {
+    bottom: 40px;
+    right: 50px;
+    text-align: center;
+    width: 100%;
+}
