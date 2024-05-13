@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination'; 
 import 'swiper/css/autoplay'; 
 
-import styles from './StylingModules/TopBannerCarousel.module.css';
+import './StylingModules/TopBannerCarousel.module.css';
 
 const banners = [
     { src: '/images/TheBoysADBanner.jpg', alt: 'First Banner' },
@@ -18,8 +18,8 @@ const TopBannerCarousel = () => {
     return (
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        navigation={{nextEl: `.${styles.swiperButtonNext}`, prevEl: `.${styles.swiperButtonPrev}`}}
-        pagination={{ clickable: true, el: `.${styles.swiperPagination}` }}
+        navigation
+        pagination={{ clickable: true }}
         autoplay={{ delay: 8000, disableOnInteraction: false }}
         loop={true}
         spaceBetween={30}
