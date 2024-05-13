@@ -14,7 +14,6 @@ const banners = [
 ];
 
 const TopBannerCarousel = () => {
-    console.log("Rendering Swiper with banners:", banners);
     return (
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -27,7 +26,7 @@ const TopBannerCarousel = () => {
       >
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
-            <img src={banner.src} alt={banner.alt} />
+            <img src={banner.src} alt={banner.alt} style={{ width: '100%', height: '80%' }} />
           </SwiperSlide>
         ))}
       </Swiper>
