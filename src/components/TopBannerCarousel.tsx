@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
@@ -14,7 +14,23 @@ const banners = [
     { src: '/images/JoinEmazonPrimeBanner.jpg', alt: 'Second Banner' },
 ];
 
+const colors = ['#FF5733', '#33C1FF']; 
+
 const TopBannerCarousel = () => {
+
+  const [arrowColor, setArrowColor] = useState(colors[0]); // Initial color
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setArrowColor(prevColor => {
+                const nextIndex = (colors.indexOf(prevColor) + 1) % colors.length;
+                return colors[nextIndex];
+            });
+        }, 2000); // Change color every 2000 milliseconds (2 seconds)
+
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    }, []);
+
     return (
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
