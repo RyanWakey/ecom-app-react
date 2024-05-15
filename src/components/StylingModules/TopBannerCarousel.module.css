@@ -1,5 +1,5 @@
 :global(.swiper-button-next), :global(.swiper-button-prev) {
-    filter: invert(100%) brightness(0);
+    filter: var(--arrow-filter, invert(100%) brightness(0)); 
 }
 
 :global(.swiper-button-next) {
