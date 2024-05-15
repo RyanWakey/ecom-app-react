@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
 import './StylingModules/TopBannerCarousel.module.css';
@@ -14,7 +13,7 @@ const banners = [
   { src: '/images/JoinEmazonPrimeBanner.jpg', alt: 'Second Banner' },
 ];
 
-const filters = ['invert(100%) brightness(0)', 'invert(100%) sepia(1) hue-rotate(200deg) saturate(3)'];
+const filters = ['invert(100%) brightness(0)', 'invert(50%) sepia(1) hue-rotate(200deg) saturate(3)'];
 
 const TopBannerCarousel = () => {
   const [arrowFilter, setArrowFilter] = useState(filters[0]); // Initial filter
@@ -25,20 +24,20 @@ const TopBannerCarousel = () => {
         const nextIndex = (filters.indexOf(prevFilter) + 1) % filters.length;
         return filters[nextIndex];
       });
-    }, 5000); // Change filter every 5s
+    }, 3000); // Change filter every 3000 milliseconds (3 seconds)
 
     return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, []);
 
   useEffect(() => {
+    // Update CSS variable for arrow filter
     document.documentElement.style.setProperty('--arrow-filter', arrowFilter);
   }, [arrowFilter]);
 
   return (
     <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
+      modules={[Navigation, Autoplay]}
       navigation
-      pagination={{ clickable: true }}
       autoplay={{ delay: 8000, disableOnInteraction: false }}
       loop={true}
       spaceBetween={30}
