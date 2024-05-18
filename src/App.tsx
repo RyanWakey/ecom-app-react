@@ -11,26 +11,28 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 const App = () => {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        {/* Header across all pages */}
-        <Header cartItemCount={0} />
-        
-        {/* Main Content */}
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/products" element={<AllProductsPage />} /> 
-          </Routes>
-        </div>
+    <AuthProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          {/* Header across all pages */}
+          <Header cartItemCount={0} />
+          
+          {/* Main Content */}
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/products" element={<AllProductsPage />} /> 
+            </Routes>
+          </div>
 
-        {/* Footer */}
-        <Footer />
-      </div>
-    </Router>
+          {/* Footer */}
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 
