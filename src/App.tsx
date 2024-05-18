@@ -5,6 +5,9 @@ import ProductDetails from './components/ProductComponents/ProductDetails';
 import AllProductsPage from './components/ProductComponents/AllProductsPage';
 import Header from './components/NavigationRelatedComponents/Header';
 import Footer from './components/NavigationRelatedComponents/Footer';
+import Login from './components/AuthenticationComponents/Login';
+import Register from './components/AuthenticationComponents/Register';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 const App = () => {
   return (
@@ -17,6 +20,8 @@ const App = () => {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/products" element={<AllProductsPage />} /> 
           </Routes>
