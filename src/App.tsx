@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import ProductDetails from './components/ProductComponents/ProductDetails';
 import AllProductsPage from './components/ProductComponents/AllProductsPage';
-import Header from './components/NavigationRelated/Header';
-import Footer from './components/NavigationRelated/Footer';
+import Header from './components/NavigationRelatedComponents/Header';
+import Footer from './components/NavigationRelatedComponents/Footer';
 
 const App = () => {
   return (
