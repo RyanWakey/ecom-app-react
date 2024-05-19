@@ -16,23 +16,32 @@ const Login: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        required
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-container">
+      <div className="login-box">
+        <h1>Sign-In</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+        <div className="secondary-action">
+          <a href="#">Need help?</a>
+        </div>
+      </div>
+    </div>
   );
 };
 
