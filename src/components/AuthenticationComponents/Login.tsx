@@ -16,16 +16,17 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h1>Sign-In</h1>
-        <form onSubmit={handleSubmit}>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className="bg-white border border-gray-300 p-6 w-full max-w-sm shadow-md rounded-md">
+        <h1 className="text-2xl font-normal mb-6 text-gray-800">Sign-In</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
+            className="h-10 mb-3 px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
           <input
             type="password"
@@ -33,12 +34,20 @@ const Login: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
+            className="h-10 mb-3 px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
-          <button type="submit">Login</button>
+          <button
+            type="submit"
+            className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          >
+            Login
+          </button>
         </form>
-        <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
-        <div className="secondary-action">
-          <a href="#">Need help?</a>
+        <p className="text-xs text-gray-600 mt-4">
+          By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.
+        </p>
+        <div className="mt-4 text-sm">
+          <a href="#" className="text-blue-600 hover:underline">Need help?</a>
         </div>
       </div>
     </div>
