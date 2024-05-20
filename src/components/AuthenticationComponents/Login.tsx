@@ -17,7 +17,8 @@ const Login: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <div className="bg-white border border-gray-300 p-6 w-full max-w-sm shadow-md rounded-md">
+      <img src="/images/Emazon.png" alt="Emazon Logo" className="w-32 mb-12" />
+      <div className="bg-white border border-gray-300 p-6 w-full max-w-sm shadow-md rounded-md -mt-16">
         <h1 className="text-2xl font-normal mb-6 text-gray-800">Sign-In</h1>
         <form onSubmit={handleSubmit} className="flex flex-col">
           <input
@@ -44,7 +45,7 @@ const Login: React.FC = () => {
           </button>
         </form>
         <p className="text-xs text-gray-600 mt-4">
-          By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.
+          By continuing, you agree to Emazon's Conditions of Use and Privacy Notice.
         </p>
         <div className="mt-4 text-sm">
           <a href="#" className="text-blue-600 hover:underline">Need help?</a>
