@@ -16,9 +16,9 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <img src="/images/Emazon.png" alt="Emazon Logo" className="w-32 mb-12" />
-      <div className="bg-white border border-gray-300 p-6 w-full max-w-sm shadow-md rounded-md -mt-16">
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+      <img src="/images/Emazon.png" alt="Emazon Logo" className="w-44" />
+      <div className="bg-white border border-gray-300 p-6 w-full max-w-sm shadow-md rounded-md mt-4">
         <h1 className="text-2xl font-normal mb-6 text-gray-800">Sign-In</h1>
         <form onSubmit={handleSubmit} className="flex flex-col">
           <input
