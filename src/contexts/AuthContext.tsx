@@ -26,31 +26,43 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    axios.get('/user').then(response => {
-      setUser(response.data);
-    }).catch(() => {
-      setUser(null);
-    });
+    const fetchUser = async () => {
+      const token = localStorage.getItem('auth_token');
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        try {
+          const { data } = await axios.get('/user');
+          setUser(data);
+        } catch (error) {
+          setUser(null);
+        }
+      }
+    };
+
+    fetchUser();
   }, []);
 
   const login = async (email: string, password: string) => {
-    const response = await axios.post('/login', { email, password });
-    setUser(response.data.user);
-    // Save token to localStorage or cookies if needed
+    const { data } = await axios.post('/login', { email, password });
+    localStorage.setItem('auth_token', data.token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+    setUser(data.user);
   };
 
   const register = async (name: string, email: string, password: string, passwordConfirmation: string) => {
-    const response = await axios.post('/register', {
-      name, email, password, password_confirmation: passwordConfirmation
+    const { data } = await axios.post('/register', { 
+      name, email, password, password_confirmation: passwordConfirmation  
     });
-    setUser(response.data.user);
-    // Save token to localStorage or cookies if needed
+    localStorage.setItem('auth_token', data.token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+    setUser(data.user);
   };
 
   const logout = async () => {
     await axios.post('/logout');
+    localStorage.removeItem('auth_token');
+    delete axios.defaults.headers.common['Authorization'];
     setUser(null);
-    // Remove token from localStorage or cookies if needed
   };
 
   return (
