@@ -18,7 +18,9 @@ const Login: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
-      <img src="/images/Emazon.png" alt="Emazon Logo" className="w-44 mb-4" />
+      <div className="p-2 rounded-md mb-4">
+        <img src="/images/Emazon.png" alt="Emazon Logo" className="w-44" />
+      </div>
       <div className="bg-white border border-gray-300 p-6 w-full max-w-sm shadow-md rounded-md">
         <h1 className="text-2xl font-normal mb-6 text-gray-800">Sign-In</h1>
         <form onSubmit={handleSubmit} className="flex flex-col">
@@ -40,7 +42,7 @@ const Login: React.FC = () => {
           />
           <button
             type="submit"
-            className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 py-2 rounded border border-gray-500 shadow focus:outline-none focus:ring-2 focus:ring-yellow-500"
           >
             Login
           </button>
@@ -52,8 +54,8 @@ const Login: React.FC = () => {
           <a href="#" className="text-blue-600 hover:underline">Need help?</a>
         </div>
         <div className="mt-4 text-sm">
-          <p className="text-gray-600">Don't have an account?
-          <Link to="/register" className="text-blue-600 hover:underline"> Create your Emazon account</Link></p>
+          <p className="text-gray-600">Don't have an account?</p>
+          <Link to="/register" className="text-blue-600 hover:underline">Create your Emazon account</Link>
         </div>
       </div>
     </div>
