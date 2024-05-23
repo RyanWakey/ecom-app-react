@@ -9,7 +9,7 @@ import Login from './components/AuthenticationComponents/Login';
 import Register from './components/AuthenticationComponents/Register';
 import { AuthProvider } from './contexts/AuthContext';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
@@ -24,7 +24,12 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/product/:id" element={<ProductDetails />} />
-              <Route path="/products" element={<AllProductsPage />} /> 
+              <Route path="/products" element={<AllProductsPage />} />
+              {/* Protected routes */}
+              {/* <Route element={<ProtectedRoute />}>
+                <Route path="/user-profile" element={<UserProfile />} />
+                <Route path="/order-history" element={<OrderHistory />} />
+              </Route> */}
             </Routes>
           </div>
 
