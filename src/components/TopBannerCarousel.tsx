@@ -47,7 +47,7 @@ const TopBannerCarousel = () => {
         <SwiperSlide key={index}>
           <div className="relative w-full h-full">
             <img src={banner.src} alt={banner.alt} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#e6e9ec]"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#e3e6e6]"></div>
           </div>
         </SwiperSlide>
       ))}
