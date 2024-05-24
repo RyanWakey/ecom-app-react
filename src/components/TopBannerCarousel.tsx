@@ -45,7 +45,10 @@ const TopBannerCarousel = () => {
     >
       {banners.map((banner, index) => (
         <SwiperSlide key={index}>
-          <img src={banner.src} alt={banner.alt} style={{ width: '100%', height: '80%' }} />
+          <div className="relative w-full h-full">
+            <img src={banner.src} alt={banner.alt} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#e6e9ec]"></div>
+          </div>
         </SwiperSlide>
       ))}
     </Swiper>
