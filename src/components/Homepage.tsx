@@ -51,7 +51,29 @@ const Homepage: React.FC = () => {
                <a href="/browsing-history" className="text-blue-600 hover:underline">See more</a>
              </div>
            </div>
+
+
+
+
+
+           <div className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-xl font-semibold mb-4">Products that might interest you</h2>
+              <div className="space-y-4">
+                {recommendedProducts.map((product) => (
+                  <div key={product.id} className="flex items-center">
+                    <img src={product.images[0]?.url} alt={product.name} className="w-16 h-16 object-cover mr-4" />
+                    <p>{product.name}</p>
+                  </div>
+                ))}
+                <a href="/recommended-products" className="text-blue-600 hover:underline">See more</a>
+              </div>
+            </div>
+
+            
           </div>
+
+
+
           ) : (
             <div>
               <h1 className="text-2xl font-semibold text-gray-800">Test2</h1>
