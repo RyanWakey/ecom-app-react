@@ -2,32 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import TopBannerCarousel from './TopBannerCarousel';
 import axios from 'axios';
+import { Product } from '../types';
 
 const Homepage: React.FC = () => {
   const { user } = useAuth();
-  const [browsingHistory, setBrowsingHistory] = useState([]);
-  const [deals, setDeals] = useState([]);
-  const [popularCategories, setPopularCategories] = useState([]);
+  const [browsingHistory, setBrowsingHistory] = useState<Product[]>([]);
+  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+  const [deals, setDeals] = useState<Product[]>([]);
+  const [todayDeals, setTodayDeals] = useState<Product[]>([]);
 
 
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
-        const historyResponse = await axios.get('/api/browsing-history');
+        const historyResponse = await axios.get<Product[]>('/api/browsing-history');
         setBrowsingHistory(historyResponse.data);
 
-        // Fetching deals for the authenticated user
-        const dealsResponse = await axios.get('/api/deals');
-        setDeals(dealsResponse.data);
-      } else {
-        // Fetching global deals for non-authenticated users
-        const dealsResponse = await axios.get('/api/deals');
-        setDeals(dealsResponse.data);
+        const recommendedResponse = await axios.get<Product[]>('/api/recommended-products');
+        setRecommendedProducts(recommendedResponse.data);
 
-        const categoriesResponse = await axios.get('/api/popular-categories');
-        setPopularCategories(categoriesResponse.data);
+        const dealsResponse = await axios.get<Product[]>('/api/deals');
+        setDeals(dealsResponse.data);
       }
+
+      const todayDealsResponse = await axios.get<Product[]>('/api/today-deals');
+      setTodayDeals(todayDealsResponse.data);
     };
+
     fetchData();
   }, [user]);
 
