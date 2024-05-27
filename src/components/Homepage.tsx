@@ -69,6 +69,19 @@ const Homepage: React.FC = () => {
               </div>
             </div>
 
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-xl font-semibold mb-4">Continue shopping deals</h2>
+              <div className="space-y-4">
+                {deals.map((deal) => (
+                  <div key={deal.id} className="flex items-center">
+                    <img src={deal.images[0]?.url} alt={deal.name} className="w-16 h-16 object-cover mr-4" />
+                    <p>{deal.name} - {deal.price} USD</p>
+                  </div>
+                ))}
+                <a href="/deals" className="text-blue-600 hover:underline">See more deals</a>
+              </div>
+            </div>
+
             
           </div>
 
