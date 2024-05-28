@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-    // I need to change this
-  baseURL: 'http:///0.0.0.0:80/api',
-  withCredentials: true,
+const instance = axios.create({
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
 });
 
-export default axiosInstance;
+export default instance;

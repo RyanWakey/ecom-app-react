@@ -53,9 +53,6 @@ const Homepage: React.FC = () => {
            </div>
 
 
-
-
-
            <div className="bg-white p-6 rounded-lg shadow-md">
               <h2 className="text-xl font-semibold mb-4">Products that might interest you</h2>
               <div className="space-y-4">
