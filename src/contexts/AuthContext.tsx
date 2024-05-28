@@ -1,11 +1,16 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import axios from '../api/axios';
+import axios from '../api/axios'; // Ensure this points to your centralized Axios instance
+import { User } from '../types';
 
 interface AuthContextType {
-  user: any;
+  user: User | null;
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
   logout: () => Promise<void>;
+}
+
+interface AuthProviderProps {
+  children: ReactNode;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -18,12 +23,8 @@ export const useAuth = (): AuthContextType => {
   return context;
 };
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
