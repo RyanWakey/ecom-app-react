@@ -15,3 +15,9 @@ export type Product = {
     category_id: number;
 
 }
+
+export interface User {
+    id: number;
+    name: string;
+    email: string;
+  }
