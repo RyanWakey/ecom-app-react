@@ -52,7 +52,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const register = async (name: string, email: string, password: string, passwordConfirmation: string) => {
     try {
-      const { data } = await axios.post('/register', { 
+      const { data } = await axios.post('/api/register', { 
         name, email, password, password_confirmation: passwordConfirmation  
       });
       localStorage.setItem('auth_token', data.token);
