@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import axios from '../api/axios'; // Ensure this points to your centralized Axios instance
+import axios from '../api/axios'; 
 import { User } from '../types';
 
 interface AuthContextType {
