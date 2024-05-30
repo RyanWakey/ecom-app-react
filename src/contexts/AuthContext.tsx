@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       if (token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         try {
-          const { data } = await axios.get('/user');
+          const { data } = await axios.get('/api/user');
           setUser(data);
         } catch (error) {
           setUser(null);
