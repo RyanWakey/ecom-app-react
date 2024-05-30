@@ -10,6 +10,10 @@ const Homepage: React.FC = () => {
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
   const [deals, setDeals] = useState<Product[]>([]);
   const [todayDeals, setTodayDeals] = useState<Product[]>([]);
+  //const [popularCategories, setPopularCategories] = useState<Category[]>([]);
+  const [techEssentials, setTechEssentials] = useState<Product[]>([]);
+  const [gardenEssentials, setGardenEssentials] = useState<Product[]>([]);
+  const [mustHaveProducts, setMustHaveProducts] = useState<Product[]>([]);
 
 
   useEffect(() => {
@@ -17,16 +21,24 @@ const Homepage: React.FC = () => {
       if (user) {
         const historyResponse = await axios.get<Product[]>('/api/browsing-history');
         setBrowsingHistory(historyResponse.data);
-
         const recommendedResponse = await axios.get<Product[]>('/api/recommended-products');
         setRecommendedProducts(recommendedResponse.data);
-
         const dealsResponse = await axios.get<Product[]>('/api/deals');
         setDeals(dealsResponse.data);
-      }
 
+        /*
+        axios.get('/api/browsing-history').then(response => setBrowsingHistory(response.data));
+        axios.get('/api/recommended-products').then(response => setRecommendedProducts(response.data));
+        axios.get('/api/deals').then(response => setDeals(response.data));
+        probably cleaner to do this instead.
+        */
+      }
       const todayDealsResponse = await axios.get<Product[]>('/api/today-deals');
       setTodayDeals(todayDealsResponse.data);
+      // axios.get('/popular-categories').then(response => setPopularCategories(response.data));
+      axios.get('/tech-essentials').then(response => setTechEssentials(response.data));
+      axios.get('/garden-essentials').then(response => setGardenEssentials(response.data));
+      axios.get('/must-have-products').then(response => setMustHaveProducts(response.data));
     };
 
     fetchData();

@@ -43,6 +43,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     fetchUser();
   }, []);
 
+  
   const login = async (email: string, password: string) => {
     const { data } = await axios.post('/login', { email, password });
     localStorage.setItem('auth_token', data.token);
@@ -60,7 +61,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.setItem('auth_token', data.token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
       setUser(data.user);
-   
     } catch (error) {
       console.error('Failed to register', error);
       throw error; 
