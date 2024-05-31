@@ -9,10 +9,11 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-// Fetch CSRF token
+// Fetch CSRF token - DELETE THIS LATER
 instance.get('/sanctum/csrf-cookie').then(() => {
-  // CSRF token is now set and will be included in all subsequent requests
+  console.log('CSRF token set');
+}).catch(err => {
+  console.error('Error fetching CSRF token:', err);
 });
-
 
 export default instance;

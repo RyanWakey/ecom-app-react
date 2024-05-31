@@ -9,7 +9,16 @@ import Login from './components/AuthenticationComponents/Login';
 import Register from './components/AuthenticationComponents/Register';
 import { AuthProvider } from './contexts/AuthContext';
 
+import axios from './api/axios'; // Importing axios instance - DELETE THIS LATER
+
 const App: React.FC = () => {
+  React.useEffect(() => {
+    // Testing Axios initialization - DELETE THIS LATER
+    axios.get('/test')
+      .then(response => console.log('Test request successful:', response))
+      .catch(err => console.error('Test request failed:', err));
+  }, []);
+
   return (
     <AuthProvider>
       <Router>
