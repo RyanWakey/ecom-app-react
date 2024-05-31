@@ -10,6 +10,7 @@ const Homepage: React.FC = () => {
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
   const [deals, setDeals] = useState<Product[]>([]);
   const [todayDeals, setTodayDeals] = useState<Product[]>([]);
+  
   //const [popularCategories, setPopularCategories] = useState<Category[]>([]);
   const [techEssentials, setTechEssentials] = useState<Product[]>([]);
   const [gardenEssentials, setGardenEssentials] = useState<Product[]>([]);
@@ -33,12 +34,12 @@ const Homepage: React.FC = () => {
         probably cleaner to do this instead.
         */
       }
-      const todayDealsResponse = await axios.get<Product[]>('/api/today-deals');
-      setTodayDeals(todayDealsResponse.data);
+      // const todayDealsResponse = await axios.get<Product[]>('/api/today-deals');
+      // setTodayDeals(todayDealsResponse.data);
       // axios.get('/popular-categories').then(response => setPopularCategories(response.data));
-      axios.get('/tech-essentials').then(response => setTechEssentials(response.data));
-      axios.get('/garden-essentials').then(response => setGardenEssentials(response.data));
-      axios.get('/must-have-products').then(response => setMustHaveProducts(response.data));
+      // axios.get('/tech-essentials').then(response => setTechEssentials(response.data));
+      // axios.get('/garden-essentials').then(response => setGardenEssentials(response.data));
+      // axios.get('/must-have-products').then(response => setMustHaveProducts(response.data));
     };
 
     fetchData();
