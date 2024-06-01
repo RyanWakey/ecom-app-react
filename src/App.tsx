@@ -14,10 +14,10 @@ import axios from './api/axios'; // Importing axios instance - DELETE THIS LATER
 const App: React.FC = () => {
   React.useEffect(() => {
     // Testing Axios initialization - DELETE THIS LATER
-    axios.get('/test')
-      .then(response => console.log('Test request successful:', response))
-      .catch(err => console.error('Test request failed:', err));
-  }, []);
+    axios.get('/sanctum/csrf-cookie')
+    .then(response => console.log('CSRF token set:', response))
+    .catch(err => console.error('Error fetching CSRF token:', err));
+}, []);
 
   return (
     <AuthProvider>

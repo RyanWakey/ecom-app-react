@@ -52,13 +52,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const register = async (name: string, email: string, password: string, passwordConfirmation: string) => {
-    await axios.get('/sanctum/csrf-cookie'); // Fetch CSRF token
-    const { data } = await axios.post('/api/register', { 
-      name, email, password, password_confirmation: passwordConfirmation  
-    });
-    localStorage.setItem('auth_token', data.token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-    setUser(data.user);
+    try {
+      const { data } = await axios.post('/api/register', { 
+        name, email, password, password_confirmation: passwordConfirmation  
+      });
+      localStorage.setItem('auth_token', data.token);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      setUser(data.user);
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
   };
 
   const logout = async () => {
