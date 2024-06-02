@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   
   const login = async (email: string, password: string) => {
-    const { data } = await axios.post('/login', { email, password });
+    const { data } = await axios.post('/api/login', { email, password });
     localStorage.setItem('auth_token', data.token);
     axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
     setUser(data.user);
@@ -65,7 +65,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const logout = async () => {
-    await axios.post('/logout');
+    await axios.post('/api/logout');
     localStorage.removeItem('auth_token');
     delete axios.defaults.headers.common['Authorization'];
     setUser(null);
