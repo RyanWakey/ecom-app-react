@@ -69,10 +69,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const logout = async () => {
-    await axios.post('/api/logout');
-    localStorage.removeItem('auth_token');
-    delete axios.defaults.headers.common['Authorization'];
-    setUser(null);
+    try {
+      await axios.post('/api/logout');
+      localStorage.removeItem('auth_token');
+      delete axios.defaults.headers.common['Authorization'];
+      setUser(null);
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
