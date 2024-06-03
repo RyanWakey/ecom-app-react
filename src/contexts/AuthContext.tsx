@@ -42,52 +42,70 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const fetchUser = async () => {
       const token = localStorage.getItem('auth_token');
       if (token) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        setAuthorizationHeader(token);
         try {
+          setLoading(true);
           const { data } = await axios.get('/api/user');
           setUser(data);
         } catch (error) {
+          console.error('Fetch user error:', error);
           setUser(null);
+        } finally {
+          setLoading(false);
         }
       }
     };
 
     fetchUser();
   }, []);
-
   
   const login = async (email: string, password: string) => {
+    setLoading(true);
+    setError(null);
     try {
       const { data } = await axios.post('/api/login', { email, password });
       localStorage.setItem('auth_token', data.token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      setAuthorizationHeader(data.token);
       setUser(data.user);
     } catch (error) {
       console.error('Login error:', error);
+      setError('Failed to login. Please check your credentials.');
+    } finally {
+      setLoading(false);
     }
   };
 
   const register = async (name: string, email: string, password: string, passwordConfirmation: string) => {
+    setLoading(true);
+    setError(null);
     try {
       const { data } = await axios.post('/api/register', { 
         name, email, password, password_confirmation: passwordConfirmation  
       });
       localStorage.setItem('auth_token', data.token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      setAuthorizationHeader(data.token);
       setUser(data.user);
     } catch (error) {
       console.error('Registration error:', error);
+      setError('Failed to register. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   const logout = async () => {
+    setLoading(true);
+    setError(null);
     try {
       await axios.post('/api/logout');
       localStorage.removeItem('auth_token');
-      delete axios.defaults.headers.common['Authorization'];
+      setAuthorizationHeader(null);
       setUser(null);
     } catch (error) {
       console.error('Logout error:', error);
+      setError('Failed to logout. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
