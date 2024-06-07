@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import { useAuth } from '../../contexts/AuthContext';
+import { DropDownButtonComponent, ItemModel } from '@syncfusion/ej2-react-splitbuttons';
+import '@syncfusion/ej2-base/styles/material.css'; // Include Syncfusion styles
+import '@syncfusion/ej2-buttons/styles/material.css';
+import '@syncfusion/ej2-splitbuttons/styles/material.css';
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -11,8 +15,28 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
   const categoryOptions = ["All", "Books", "Electronics", "LongLongLongLong"];
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
+
+  const profileItems: ItemModel[] = [
+    {
+      text: 'Profile',
+      url: '/profile'
+    },
+    {
+      text: 'Logout',
+      id: 'logout'
+    }
+  ];
+
+  const handleSelect = (args: any) => {
+    if (args.item.id === 'logout') {
+      logout();
+    } else {
+      navigate(args.item.url);
+    }
+  };
 
   return (
     <header>
@@ -35,17 +59,13 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
         {/* Profile and Basket Icon */}
         <div className="flex items-center mr-2">
           {user ? (
-            <>
-              <div className="relative group">
-                <span className="mr-4 cursor-pointer">
-                  Hello, {user.name} <br /> Accounts & Information
-                </span>
-                <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg p-2 hidden group-hover:block">
-                  <Link to="/profile" className="block px-4 py-2 hover:bg-gray-200">Profile</Link>
-                  <button onClick={logout} className="block w-full text-left px-4 py-2 hover:bg-gray-200">Logout</button>
-                </div>
-              </div>
-            </>
+            <DropDownButtonComponent 
+              items={profileItems} 
+              iconCss='e-icons e-arrow-down'
+              select={handleSelect}
+              cssClass='e-caret-hide'>
+              <span className="font-semibold text-sm">Hello, {user.name}<br/>Accounts & Information</span>
+            </DropDownButtonComponent>
           ) : (
             <>
               <Link to="/register" className="hover:underline mr-4">Register</Link>
