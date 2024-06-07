@@ -20,12 +20,12 @@ const Homepage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
-        const historyResponse = await axios.get<Product[]>('/api/browsing-history');
-        setBrowsingHistory(historyResponse.data);
-        const recommendedResponse = await axios.get<Product[]>('/api/recommended-products');
-        setRecommendedProducts(recommendedResponse.data);
-        const dealsResponse = await axios.get<Product[]>('/api/deals');
-        setDeals(dealsResponse.data);
+        // const historyResponse = await axios.get<Product[]>('/api/browsing-history');
+        // setBrowsingHistory(historyResponse.data);
+        // const recommendedResponse = await axios.get<Product[]>('/api/recommended-products');
+        // setRecommendedProducts(recommendedResponse.data);
+        // const dealsResponse = await axios.get<Product[]>('/api/deals');
+        // setDeals(dealsResponse.data);
 
         /*
         axios.get('/api/browsing-history').then(response => setBrowsingHistory(response.data));
