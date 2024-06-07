@@ -8,17 +8,12 @@ import Footer from './components/NavigationRelatedComponents/Footer';
 import Login from './components/AuthenticationComponents/Login';
 import Register from './components/AuthenticationComponents/Register';
 import { AuthProvider } from './contexts/AuthContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import axios from './api/axios'; // Importing axios instance - DELETE THIS LATER
+
+
 
 const App: React.FC = () => {
-  React.useEffect(() => {
-    // Testing Axios initialization - DELETE THIS LATER
-    axios.get('/sanctum/csrf-cookie')
-    .then(response => console.log('CSRF token set:', response))
-    .catch(err => console.error('Error fetching CSRF token:', err));
-}, []);
-
   return (
     <AuthProvider>
       <Router>
