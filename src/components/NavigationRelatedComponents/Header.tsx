@@ -37,7 +37,6 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           {user ? (
             <>
               <Link to="/profile" className="hover:underline mr-4">Profile</Link>
-              <button onClick={logout} className="hover:underline text-red-500 mr-4">Logout</button>
             </>
           ) : (
             <>
