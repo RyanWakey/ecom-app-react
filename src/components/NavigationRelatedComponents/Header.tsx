@@ -1,9 +1,8 @@
-// Header.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
+import { useAuth } from '../../contexts/AuthContext';
 
-// Interface for props
 interface HeaderProps {
   cartItemCount?: number;
 }
@@ -11,13 +10,14 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
   const categoryOptions = ["All", "Books", "Electronics", "LongLongLongLong"];
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const { user, logout } = useAuth();
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
   return (
     <header>
       {/* Top Navigation Bar */}
-      <nav style={{backgroundColor: '#131921' }} className="p-1.5 text-white flex justify-between items-center">
+      <nav style={{ backgroundColor: '#131921' }} className="p-1.5 text-white flex justify-between items-center">
         {/* Company Logo */}
         <div className="flex items-center">
           <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" />
@@ -34,8 +34,17 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 
         {/* Profile and Basket Icon */}
         <div className="flex items-center mr-2">
-          <a href="/register" className="hover:underline mr-4">Register</a>
-          <a href="/login" className="hover:underline mr-4">Login</a>
+          {user ? (
+            <>
+              <Link to="/profile" className="hover:underline mr-4">Profile</Link>
+              <button onClick={logout} className="hover:underline text-red-500 mr-4">Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/register" className="hover:underline mr-4">Register</Link>
+              <Link to="/login" className="hover:underline mr-4">Login</Link>
+            </>
+          )}
           <div className="relative h-10">
             <img src="/images/CartIcon.png" alt="Basket" className="h-full" />
             <span className="absolute -top-0.5 -right-1 bg-red-500 text-white text-xs rounded-full px-2 py-1">
