@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Dropdown from './Dropdown';
+import CustomDropdown from './Dropdown';
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useAuth } from '../../contexts/AuthContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 interface HeaderProps {
@@ -12,10 +15,17 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
   const categoryOptions = ["All", "Books", "Electronics", "LongLongLongLong"];
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const { user, logout } = useAuth();
-
+  const navigate = useNavigate();
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
+  const handleSelect = (eventKey: string | null) => {
+    if (eventKey === 'logout') {
+      logout();
+    } else if (eventKey) {
+      navigate(eventKey);
+    }
+  };
 
   return (
     <header>
@@ -28,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 
         {/* Search Bar and Category Dropdown */}
         <div className="flex border border-gray-500 rounded overflow-hidden text-sm ml-12">
-          <Dropdown options={categoryOptions} />
+          <CustomDropdown options={categoryOptions} />
           <input className="px-72 py-1 text-xs w-full" type="text" placeholder="Search Emazon.co.uk" />
           <button className="bg-yellow-500 px-2.5 py-1">
             <img src="/images/MagnifyingGlass.png" alt="Search" className="h-4 w-8" />
@@ -39,7 +49,19 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
         <div className="flex items-center mr-2">
           {user ? (
             <>
-            
+              <DropdownButton
+                id="dropdown-basic-button"
+                title={<span className="font-semibold text-sm">Hello, {user.name}<br />Accounts & Information</span>}
+                onSelect={handleSelect}
+              >
+                <Dropdown.Item eventKey="/profile">Your Profile</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="/orders">Your Orders</Dropdown.Item>
+                <Dropdown.Item eventKey="/wishlist">Your Wishlist</Dropdown.Item>
+                <Dropdown.Item eventKey="/settings">Account Settings</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="logout">Logout</Dropdown.Item>
+              </DropdownButton>
             </>
           ) : (
             <>
