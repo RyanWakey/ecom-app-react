@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomDropdown from './Dropdown';
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useAuth } from '../../contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -30,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
   return (
     <header>
       {/* Top Navigation Bar */}
-      <nav style={{ backgroundColor: '#131921' }} className="p-1.5 text-white flex justify-between items-center">
+      <nav style={{ backgroundColor: '#131921' }}  className="p-1.5 text-white flex justify-between items-center">
         {/* Company Logo */}
         <div className="flex items-center">
           <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" />
@@ -45,14 +44,27 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           </button>
         </div>
 
-        {/* Profile and Basket Icon */}
-        <div className="flex items-center mr-2">
+
+         {/* Profile and Basket Icon */}
+         <div className="flex items-center mr-2">
           {user ? (
             <>
-              <DropdownButton
+              <DropdownButton 
                 id="dropdown-basic-button"
-                title={<span className="font-semibold text-sm">Hello, {user.name}<br />Accounts & Information</span>}
+                title={
+                  <div className="flex items-center text-white">
+                    <div className="flex flex-col items-start mr-2">
+                      <span className="font-semibold text-sm">Hello, {user.name}</span>
+                      <span className="font-normal text-sm">Accounts & Information</span>
+                    </div>
+                    <div className="ml-auto">
+                      <span className="dropdown-toggle"></span>
+                    </div>
+                  </div>
+                }
                 onSelect={handleSelect}
+                className="bg-transparent border-none p-0"
+                variant="transparent"
               >
                 <Dropdown.Item eventKey="/profile">Your Profile</Dropdown.Item>
                 <Dropdown.Divider />
@@ -126,3 +138,4 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 };
 
 export default Header;
+
