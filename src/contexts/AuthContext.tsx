@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import axios from '../api/axios';
+import axios, { initializeAxios } from '../api/axios';
 import { User } from '../types';
 
 interface AuthContextType {
@@ -52,18 +52,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     };
 
-    fetchUser();
-  }, []);
+    const initializeAuth = async () => {
+      await initializeAxios();
+      await fetchUser();
+    };
 
-  const fetchCsrfToken = async () => {
-    await axios.get('/sanctum/csrf-cookie');
-  };
+    initializeAuth();
+  }, []);
 
   const login = async (email: string, password: string) => {
     setLoading(true);
     setError(null);
     try {
-      await fetchCsrfToken();
       const { data } = await axios.post('/api/login', { email, password });
       localStorage.setItem('auth_token', data.token);
       setAuthorizationHeader(data.token);
@@ -80,7 +80,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      await fetchCsrfToken();
       const { data } = await axios.post('/api/register', {
         name, email, password, password_confirmation: passwordConfirmation
       });
@@ -99,7 +98,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      await fetchCsrfToken();
       await axios.post('/api/logout');
       localStorage.removeItem('auth_token');
       setAuthorizationHeader(null);

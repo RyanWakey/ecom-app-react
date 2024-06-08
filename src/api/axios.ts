@@ -9,7 +9,7 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-export const fetchCsrfToken = async () => {
+export const initializeAxios = async () => {
   await instance.get('/sanctum/csrf-cookie');
 };
 
