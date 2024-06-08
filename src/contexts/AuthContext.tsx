@@ -38,31 +38,32 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const token = localStorage.getItem('auth_token');
-      if (token) {
-        setAuthorizationHeader(token);
-        try {
-          setLoading(true);
-          const { data } = await axios.get('/api/user');
-          setUser(data);
-        } catch (error) {
-          console.error('Fetch user error:', error);
-          setUser(null);
-        } finally {
-          setLoading(false);
-        }
+  const fetchUser = async () => {
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      setAuthorizationHeader(token);
+      try {
+        const { data } = await axios.get('/api/user');
+        setUser(data);
+      } catch (error) {
+        setUser(null);
       }
-    };
+    }
+  };
 
+  useEffect(() => {
     fetchUser();
   }, []);
+
+  const fetchCsrfToken = async () => {
+    await axios.get('/sanctum/csrf-cookie');
+  };
   
   const login = async (email: string, password: string) => {
     setLoading(true);
     setError(null);
     try {
+      await fetchCsrfToken();
       const { data } = await axios.post('/api/login', { email, password });
       localStorage.setItem('auth_token', data.token);
       setAuthorizationHeader(data.token);
@@ -79,6 +80,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
+      await fetchCsrfToken();
       const { data } = await axios.post('/api/register', { 
         name, email, password, password_confirmation: passwordConfirmation  
       });
@@ -97,6 +99,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
+      await fetchCsrfToken();
       await axios.post('/api/logout');
       localStorage.removeItem('auth_token');
       setAuthorizationHeader(null);
