@@ -5,6 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useAuth } from '../../contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../StylingModules/styles.css';
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -48,33 +49,32 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
          {/* Profile and Basket Icon */}
          <div className="flex items-center mr-2">
           {user ? (
-            <>
-              <DropdownButton 
-                id="dropdown-basic-button"
-                title={
-                  <div className="flex items-center text-white">
-                    <div className="flex flex-col items-start mr-2">
-                      <span className="font-semibold text-sm">Hello, {user.name}</span>
-                      <span className="font-normal text-sm">Accounts & Information</span>
-                    </div>
-                    <div className="ml-auto">
-                      <span className="dropdown-toggle"></span>
-                    </div>
-                  </div>
-                }
-                onSelect={handleSelect}
-                className="bg-transparent border-none p-0"
-                variant="transparent"
+            <Dropdown>
+              <Dropdown.Toggle 
+                as="div" 
+                className="flex items-center bg-transparent border-none p-0 caret-off"
               >
-                <Dropdown.Item eventKey="/profile">Your Profile</Dropdown.Item>
+                <button
+                  type="button"
+                  className="bg-transparent border-none p-0 flex items-center"
+                  data-toggle="dropdown"
+                >
+                  <div className="flex flex-col items-start text-white mr-2">
+                    <span className="font-semibold text-sm">Hello, {user.name}</span>
+                    <span className="font-normal text-sm">Accounts & Information</span>
+                  </div>
+                </button>
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item eventKey="/profile" >Your Profile</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item eventKey="/orders">Your Orders</Dropdown.Item>
-                <Dropdown.Item eventKey="/wishlist">Your Wishlist</Dropdown.Item>
+                <Dropdown.Item eventKey="/wishlist"> Your Wishlist</Dropdown.Item>
                 <Dropdown.Item eventKey="/settings">Account Settings</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item eventKey="logout">Logout</Dropdown.Item>
-              </DropdownButton>
-            </>
+              </Dropdown.Menu>
+            </Dropdown>
           ) : (
             <>
               <Link to="/register" className="hover:underline mr-4">Register</Link>
