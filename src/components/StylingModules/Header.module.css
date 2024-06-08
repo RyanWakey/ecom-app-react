@@ -1,0 +1,10 @@
+:global(.custom-dropdown-toggle::after) {
+    display: none;
+}
+
+:global(.custom-dropdown-toggle .custom-arrow) {
+    position: relative;
+    left: -0px; 
+    top: 10px;  
+    opacity: 50%;
+}
