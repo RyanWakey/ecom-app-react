@@ -4,7 +4,7 @@ import CustomDropdown from './Dropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAuth } from '../../contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../StylingModules/Header.module.css'; // Import CSS module
+import styles from '../StylingModules/Header.module.css'; 
 
 interface HeaderProps {
   cartItemCount?: number;
