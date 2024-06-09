@@ -35,13 +35,13 @@ const Homepage: React.FC = () => {
   }, [user]);
 
   return (
-    <div className="bg-[#e3e6e6] min-h-screen">
+    <div className="bg-[#e3e6e6] min-h-screen relative">
       <TopBannerCarousel />
-      <div className="flex flex-col items-center p-4">
-        <div className="relative -mt-20 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="relative flex flex-col items-center z-10">
+        <div className="relative -mt-72 w-full px-4 max-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {user ? (
             <>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white p-6 shadow-md">
                 <h2 className="text-xl font-semibold mb-4">Pick up where you left off</h2>
                 <div className="space-y-4">
                   {browsingHistory.map((item) => (
@@ -54,7 +54,7 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white p-6 shadow-md">
                 <h2 className="text-xl font-semibold mb-4">Products that might interest you</h2>
                 <div className="space-y-4">
                   {recommendedProducts.map((product) => (
@@ -67,7 +67,7 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white p-6 shadow-md">
                 <h2 className="text-xl font-semibold mb-4">Continue shopping deals</h2>
                 <div className="space-y-4">
                   {deals.map((deal) => (
@@ -80,7 +80,7 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white p-6 shadow-md">
                 <h2 className="text-xl font-semibold mb-4">Today's Deals</h2>
                 <div className="space-y-4">
                   {todayDeals.map((deal) => (
