@@ -4,7 +4,7 @@ import CustomDropdown from './Dropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAuth } from '../../contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../StylingModules/Header.module.css';
+import styles from '../StylingModules/Header.module.css'; // Import CSS module
 
 interface HeaderProps {
   cartItemCount?: number;
@@ -44,14 +44,13 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
           </button>
         </div>
 
-
-         {/* Profile and Basket Icon */}
-         <div className="flex items-center mr-2">
+        {/* Profile and Basket Icon */}
+        <div className="flex items-center mr-2">
           {user ? (
             <Dropdown>
               <Dropdown.Toggle 
                 as="div" 
-                className="flex items-center bg-transparent border-none p-0 caret-off"
+                className={`flex items-center bg-transparent border-none p-0 ${styles.caretOff}`}
               >
                 <button
                   type="button"
@@ -62,14 +61,25 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                     <span className="font-semibold text-sm">Hello, {user.name}</span>
                     <span className="font-normal text-sm">Accounts & Information</span>
                   </div>
+                  <span className={`ml-2 ${styles.customArrow}`}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                    >
+                      <path d="M7 10l5 5 5-5z" />
+                    </svg>
+                  </span>
                 </button>
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item eventKey="/profile" >Your Profile</Dropdown.Item>
+                <Dropdown.Item eventKey="/profile" onSelect={(e: any) => handleSelect(e)}>Your Profile</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item eventKey="/orders">Your Orders</Dropdown.Item>
-                <Dropdown.Item eventKey="/wishlist"> Your Wishlist</Dropdown.Item>
-                <Dropdown.Item eventKey="/settings">Account Settings</Dropdown.Item>
+                <Dropdown.Item eventKey="/orders" onSelect={(e: any) => handleSelect(e)}>Your Orders</Dropdown.Item>
+                <Dropdown.Item eventKey="/wishlist" onSelect={(e: any) => handleSelect(e)}>Your Wishlist</Dropdown.Item>
+                <Dropdown.Item eventKey="/settings" onSelect={(e: any) => handleSelect(e)}>Account Settings</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item eventKey="logout" onSelect={(e: any) => handleSelect(e)}>Logout</Dropdown.Item>
               </Dropdown.Menu>
@@ -137,4 +147,3 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 };
 
 export default Header;
-

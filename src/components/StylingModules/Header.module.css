@@ -1,10 +1,13 @@
-:global(.custom-dropdown-toggle::after) {
+.caretOff::after {
     display: none;
 }
 
-:global(.custom-dropdown-toggle .custom-arrow) {
+.customDropdownToggle {
     position: relative;
-    left: -0px; 
-    top: 10px;  
-    opacity: 50%;
+}
+
+.customArrow {
+    position: relative;
+    left: -15px; /* Adjust this value to move the arrow to the left */
+    top: 10px;  /* Adjust this value to move the arrow down */
 }
