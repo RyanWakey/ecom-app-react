@@ -38,68 +38,64 @@ const Homepage: React.FC = () => {
     <div className="bg-[#e3e6e6] min-h-screen">
       <TopBannerCarousel />
       <div className="flex flex-col items-center p-4">
-        <div className="mt-8 w-full max-w-2xl">
+        <div className="relative -mt-20 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {user ? (
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-             <h2 className="text-xl font-semibold mb-4">Pick up where you left off</h2>
-             <div className="space-y-4">
-               {browsingHistory.map((item) => (
-                 <div key={item.id} className="flex items-center">
-                   <img src={item.images[0]?.url} alt={item.name} className="w-16 h-16 object-cover mr-4" />
-                   <p>{item.name}</p>
-                 </div>
-               ))}
-               <a href="/browsing-history" className="text-blue-600 hover:underline">See more</a>
-             </div>
-           </div>
-
-
-           <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">Products that might interest you</h2>
-              <div className="space-y-4">
-                {recommendedProducts.map((product) => (
-                  <div key={product.id} className="flex items-center">
-                    <img src={product.images[0]?.url} alt={product.name} className="w-16 h-16 object-cover mr-4" />
-                    <p>{product.name}</p>
-                  </div>
-                ))}
-                <a href="/recommended-products" className="text-blue-600 hover:underline">See more</a>
+            <>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-4">Pick up where you left off</h2>
+                <div className="space-y-4">
+                  {browsingHistory.map((item) => (
+                    <div key={item.id} className="flex items-center">
+                      <img src={item.images[0]?.url} alt={item.name} className="w-16 h-16 object-cover mr-4" />
+                      <p>{item.name}</p>
+                    </div>
+                  ))}
+                  <a href="/browsing-history" className="text-blue-600 hover:underline">See more</a>
+                </div>
               </div>
-            </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">Continue shopping deals</h2>
-              <div className="space-y-4">
-                {deals.map((deal) => (
-                  <div key={deal.id} className="flex items-center">
-                    <img src={deal.images[0]?.url} alt={deal.name} className="w-16 h-16 object-cover mr-4" />
-                    <p>{deal.name} - {deal.price} USD</p>
-                  </div>
-                ))}
-                <a href="/deals" className="text-blue-600 hover:underline">See more deals</a>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-4">Products that might interest you</h2>
+                <div className="space-y-4">
+                  {recommendedProducts.map((product) => (
+                    <div key={product.id} className="flex items-center">
+                      <img src={product.images[0]?.url} alt={product.name} className="w-16 h-16 object-cover mr-4" />
+                      <p>{product.name}</p>
+                    </div>
+                  ))}
+                  <a href="/recommended-products" className="text-blue-600 hover:underline">See more</a>
+                </div>
               </div>
-            </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">Today's Deals</h2>
-              <div className="space-y-4">
-                {todayDeals.map((deal) => (
-                  <div key={deal.id} className="flex items-center">
-                    <img src={deal.images[0]?.url} alt={deal.name} className="w-16 h-16 object-cover mr-4" />
-                    <p>{deal.name} - {deal.price} USD</p>
-                  </div>
-                ))}
-                <a href="/today-deals" className="text-blue-600 hover:underline">Shop all Deals</a>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-4">Continue shopping deals</h2>
+                <div className="space-y-4">
+                  {deals.map((deal) => (
+                    <div key={deal.id} className="flex items-center">
+                      <img src={deal.images[0]?.url} alt={deal.name} className="w-16 h-16 object-cover mr-4" />
+                      <p>{deal.name} - {deal.price} USD</p>
+                    </div>
+                  ))}
+                  <a href="/deals" className="text-blue-600 hover:underline">See more deals</a>
+                </div>
               </div>
-            </div>      
-            
-          </div>
 
-              
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-4">Today's Deals</h2>
+                <div className="space-y-4">
+                  {todayDeals.map((deal) => (
+                    <div key={deal.id} className="flex items-center">
+                      <img src={deal.images[0]?.url} alt={deal.name} className="w-16 h-16 object-cover mr-4" />
+                      <p>{deal.name} - {deal.price} USD</p>
+                    </div>
+                  ))}
+                  <a href="/today-deals" className="text-blue-600 hover:underline">Shop all Deals</a>
+                </div>
+              </div> 
+            </>
           ) : (
             <div>
-              <h1 className="text-2xl font-semibold text-gray-800">Test2</h1>
+              <h1 className="text-2xl font-semibold text-gray-800">Please log in to see personalized content</h1>
             </div>
           )}
         </div>
