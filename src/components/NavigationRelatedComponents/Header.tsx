@@ -18,18 +18,24 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
-  const handleSelect = (eventKey: string | null) => {
-    if (eventKey === 'logout') {
-      logout();
-    } else if (eventKey) {
-      navigate(eventKey);
+  const handleNavigation = (path: string) => {
+    navigate(path);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      console.log('Logged out successfully');
+    } catch (error) {
+      console.error('Logout error:', error);
     }
   };
+
 
   return (
     <header>
       {/* Top Navigation Bar */}
-      <nav style={{ backgroundColor: '#131921' }}  className="p-2 text-white flex justify-between items-center">
+      <nav style={{ backgroundColor: '#131921' }} className="p-2 text-white flex justify-between items-center">
         {/* Company Logo */}
         <div className="flex items-center">
           <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" />
@@ -75,13 +81,13 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
                 </button>
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item eventKey="/profile" onSelect={(e: any) => handleSelect(e)}>Your Profile</Dropdown.Item>
+                <Dropdown.Item eventKey="/profile">Your Profile</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item eventKey="/orders" onSelect={(e: any) => handleSelect(e)}>Your Orders</Dropdown.Item>
-                <Dropdown.Item eventKey="/wishlist" onSelect={(e: any) => handleSelect(e)}>Your Wishlist</Dropdown.Item>
-                <Dropdown.Item eventKey="/settings" onSelect={(e: any) => handleSelect(e)}>Account Settings</Dropdown.Item>
+                <Dropdown.Item eventKey="/orders">Your Orders</Dropdown.Item>
+                <Dropdown.Item eventKey="/wishlist">Your Wishlist</Dropdown.Item>
+                <Dropdown.Item eventKey="/settings" >Account Settings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item eventKey="logout" onSelect={(e: any) => handleSelect(e)}>Logout</Dropdown.Item>
+                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           ) : (
