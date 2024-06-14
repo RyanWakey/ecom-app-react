@@ -30,11 +30,28 @@ const Homepage: React.FC = () => {
       // axios.get('/tech-essentials').then(response => setTechEssentials(response.data));
       // axios.get('/garden-essentials').then(response => setGardenEssentials(response.data));
       // axios.get('/must-have-products').then(response => setMustHaveProducts(response.data));
+      // axios.get('/api/beauty-wellness').then(response => setBeautyWellness(response.data));
     };
 
     fetchData();
   }, [user]);
 
+  const renderProductSection = (title: string, products: Product[], link: string) => (
+    <div className="bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+      <div className="space-y-4">
+        {products.map((product) => (
+          <div key={product.id} className="flex items-center">
+            <img src={product.images[0]?.url} alt={product.name} className="w-16 h-16 object-cover mr-4" />
+            <p>{product.name}</p>
+          </div>
+        ))}
+        <a href={link} className="text-blue-600 hover:underline">See more</a>
+      </div>
+    </div>
+  );
+
+  
   return (
     <div className="bg-[#e3e6e6] min-h-screen relative">
       <TopBannerCarousel />
