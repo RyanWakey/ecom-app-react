@@ -95,7 +95,7 @@ const Homepage: React.FC = () => {
             </>
           ) : (
             <div>
-              <h1 className="text-2xl font-semibold text-gray-800">Please log in to see personalized content</h1>
+              
             </div>
           )}
         </div>
