@@ -38,7 +38,9 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
       <nav style={{ backgroundColor: '#131921' }} className="p-2 text-white flex justify-between items-center">
         {/* Company Logo */}
         <div className="flex items-center">
-          <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" />
+          <Link to="/">
+            <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" />
+          </Link>
         </div>
 
         {/* Search Bar and Category Dropdown */}
