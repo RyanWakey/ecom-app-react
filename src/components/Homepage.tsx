@@ -15,6 +15,7 @@ const Homepage: React.FC = () => {
   const [techEssentials, setTechEssentials] = useState<Product[]>([]);
   const [gardenEssentials, setGardenEssentials] = useState<Product[]>([]);
   const [mustHaveProducts, setMustHaveProducts] = useState<Product[]>([]);
+  const [beautyWellness, setBeautyWellness] = useState<Product[]>([]);
 
 
   useEffect(() => {
