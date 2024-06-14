@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
       {/* Top Navigation Bar */}
       <nav style={{ backgroundColor: '#131921' }} className="p-2 text-white flex justify-between items-center">
         {/* Company Logo */}
-        <div className="flex items-center">
+          <div className="flex items-center">
           <Link to="/">
             <img src="/images/Emazon.png" alt="Emazon Logo" className="ml-3 h-10" />
           </Link>
@@ -125,11 +125,12 @@ const Header: React.FC<HeaderProps> = ({ cartItemCount = 0 }) => {
 
           {/* Secondary Navigation Links */}
           <nav className="flex space-x-3 text-sm font-semibold text-white text-opacity-80 ml-10">
-            <Link to="/deals" className="hover:text-yellow-500">Today's Deals</Link>
-            <Link to="/buy-again" className="hover:text-yellow-500">Buy Again</Link>
-            <Link to="/browsing-history" className="hover:text-yellow-500">Browsing History</Link>
-            <Link to="/products" className="hover:text-yellow-500">Products</Link>
+            <Link to="/deals" className="hover:text-yellow-500 text-white no-underline">Today's Deals</Link>
+            <Link to="/buy-again" className="hover:text-yellow-500 text-white no-underline">Buy Again</Link>
+            <Link to="/browsing-history" className="hover:text-yellow-500 text-white no-underline">Browsing History</Link>
+            <Link to="/products" className="hover:text-yellow-500 text-white no-underline">Products</Link>
           </nav>
+
         </div>
       </div>
 
