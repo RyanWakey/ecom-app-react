@@ -66,7 +66,10 @@ const Homepage: React.FC = () => {
             </>
           ) : (
             <div>
-              
+              {renderProductSection('Garden Essentials', gardenEssentials, '/garden-essentials')}
+              {renderProductSection('Popular Categories', techEssentials, '/popular-categories')}
+              {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
+              {renderProductSection('Beauty and Wellness', beautyWellness, '/beauty-wellness')}
             </div>
           )}
         </div>
