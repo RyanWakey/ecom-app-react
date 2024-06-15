@@ -37,7 +37,7 @@ const Homepage: React.FC = () => {
   }, [user]);
 
   const renderProductSection = (title: string, products: Product[], link: string) => (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-6 shadow-md">
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
       <div className="space-y-4">
         {products.map((product) => (
@@ -46,7 +46,7 @@ const Homepage: React.FC = () => {
             <p>{product.name}</p>
           </div>
         ))}
-        <a href={link} className="text-blue-600 hover:underline">See more</a>
+        <a href={link} className="text-blue-600 no-underline">See more</a>
       </div>
     </div>
   );
@@ -63,6 +63,10 @@ const Homepage: React.FC = () => {
               {renderProductSection('Products that might interest you', recommendedProducts, '/recommended-products')}
               {renderProductSection('Continue shopping deals', deals, '/deals')}
               {renderProductSection('Today\'s Deals', todayDeals, '/today-deals')}
+              {renderProductSection('Garden Essentials', gardenEssentials, '/garden-essentials')}
+              {renderProductSection('Popular Categories', techEssentials, '/popular-categories')}
+              {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
+              {renderProductSection('Beauty and Wellness', beautyWellness, '/beauty-wellness')}
             </>
           ) : (
             <>
