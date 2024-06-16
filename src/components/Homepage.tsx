@@ -46,10 +46,13 @@ const Homepage: React.FC = () => {
             <p>{product.name}</p>
           </div>
         ))}
-        <a href={link} className="text-blue-600 no-underline">See more</a>
+      </div>
+      <div className="mt-auto">
+        <a href={link} className="text-blue-600 hover:text-orange-500 no-underline">See more</a>
       </div>
     </div>
   );
+  
 
 
   return (
