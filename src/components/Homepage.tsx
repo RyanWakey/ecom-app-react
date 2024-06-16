@@ -11,7 +11,6 @@ const Homepage: React.FC = () => {
   const [deals, setDeals] = useState<Product[]>([]);
   const [todayDeals, setTodayDeals] = useState<Product[]>([]);
   
-  //const [popularCategories, setPopularCategories] = useState<Category[]>([]);
   const [techEssentials, setTechEssentials] = useState<Product[]>([]);
   const [gardenEssentials, setGardenEssentials] = useState<Product[]>([]);
   const [mustHaveProducts, setMustHaveProducts] = useState<Product[]>([]);
@@ -26,9 +25,9 @@ const Homepage: React.FC = () => {
         // axios.get('/api/deals').then(response => setDeals(response.data));
       }
       // axios.get('/api/today-deals').then(response => setTodayDeals(response.data));
-      // axios.get('/popular-categories').then(response => setPopularCategories(response.data));
       // axios.get('/tech-essentials').then(response => setTechEssentials(response.data));
-      // axios.get('/garden-essentials').then(response => setGardenEssentials(response.data));
+      const gardenEssentialsResponse = await axios.get('/api/garden-essentials');
+      setGardenEssentials(gardenEssentialsResponse.data);
       // axios.get('/must-have-products').then(response => setMustHaveProducts(response.data));
       // axios.get('/api/beauty-wellness').then(response => setBeautyWellness(response.data));
     };
