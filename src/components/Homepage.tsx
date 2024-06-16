@@ -37,7 +37,7 @@ const Homepage: React.FC = () => {
   }, [user]);
 
   const renderProductSection = (title: string, products: Product[], link: string) => (
-    <div className="bg-white p-6 shadow-md">
+    <div className="bg-white p-6 shadow-md flex flex-col justify-between">
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
       <div className="space-y-4">
         {products.map((product) => (
