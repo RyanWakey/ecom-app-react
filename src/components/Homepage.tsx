@@ -26,8 +26,8 @@ const Homepage: React.FC = () => {
       }
       // axios.get('/api/today-deals').then(response => setTodayDeals(response.data));
       // axios.get('/tech-essentials').then(response => setTechEssentials(response.data));
-      const gardenEssentialsResponse = await axios.get('http://localhost:80/api/garden-essentials-subcategories');
-      setGardenEssentials(gardenEssentialsResponse.data);
+      const gardenEssentialsResponse = await axios.get('/api/garden-essentials-subcategories');
+      setGardenEssentials(gardenEssentialsResponse.data.data);
       // axios.get('/must-have-products').then(response => setMustHaveProducts(response.data));
       // axios.get('/api/beauty-wellness').then(response => setBeautyWellness(response.data));
     };
