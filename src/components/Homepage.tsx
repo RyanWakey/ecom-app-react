@@ -55,19 +55,16 @@ const Homepage: React.FC = () => {
   const renderCategorySection = (title: string, categories: Category[], link: string) => (
     <div className="bg-white p-6 shadow-md flex flex-col justify-between">
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
-      <div className="space-y-4">
-        {categories.map((category, index) => {
-          console.log(category.image_url); // Log image URLs
-          return (
-            <div key={index} className="flex items-center">
-              <img src={category.image_url} alt={category.name} className="w-16 h-16 object-cover mr-4" />
-              <p>{category.name}</p>
-            </div>
-          );
-        })}
+      <div className="grid grid-cols-2 gap-4">
+        {categories.map((category, index) => (
+          <div key={index} className="flex flex-col items-center">
+            <img src={category.image_url} alt={category.name} className="w-full h-24 object-cover" />
+            <p className="mt-2 text-center">{category.name}</p>
+          </div>
+        ))}
       </div>
-      <div className="mt-auto">
-        <a href={link} className="text-blue-600 hover:text-orange-500 no-underline">See more</a>
+      <div className="mt-auto text-center">
+        <a href={link} className="text-blue-600 hover:text-orange-500 no-underline">Shop now</a>
       </div>
     </div>
   );
