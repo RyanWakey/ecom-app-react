@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import TopBannerCarousel from './TopBannerCarousel';
 import axios from 'axios';
-import { Product } from '../types';
+import { Product, Category } from '../types';
 
 const Homepage: React.FC = () => {
   const { user } = useAuth();
