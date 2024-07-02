@@ -12,7 +12,7 @@ const Homepage: React.FC = () => {
   const [todayDeals, setTodayDeals] = useState<Product[]>([]);
   
   const [techEssentials, setTechEssentials] = useState<Product[]>([]);
-  const [gardenEssentials, setGardenEssentials] = useState<Product[]>([]);
+  const [gardenEssentials, setGardenEssentials] = useState<Category[]>([]);
   const [mustHaveProducts, setMustHaveProducts] = useState<Product[]>([]);
   const [beautyWellness, setBeautyWellness] = useState<Product[]>([]);
 

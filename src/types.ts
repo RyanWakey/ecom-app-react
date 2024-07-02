@@ -2,7 +2,7 @@ interface ProductImage {
     id: number;
     url: string;
     product_id: number;
-}
+    }
 
 export type Product = {
 
@@ -14,10 +14,15 @@ export type Product = {
     images: ProductImage[]; 
     category_id: number;
 
-}
+    }
 
 export interface User {
     id: number;
     name: string;
     email: string;
+  }
+
+export interface Category {
+    name: string;
+    image_url: string;
   }
