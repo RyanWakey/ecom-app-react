@@ -33,7 +33,7 @@ const Homepage: React.FC = () => {
     };
 
     fetchData();
-  }, [user]);
+  }, [user]); // Depend on `user`, only re-run when `user` changes
 
   const renderProductSection = (title: string, products: Product[], link: string) => (
     <div className="bg-white p-6 shadow-md flex flex-col justify-between">
@@ -56,12 +56,15 @@ const Homepage: React.FC = () => {
     <div className="bg-white p-6 shadow-md flex flex-col justify-between">
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
       <div className="space-y-4">
-        {categories.map((category, index) => (
-          <div key={index} className="flex items-center">
-            <img src={category.image_url} alt={category.name} className="w-16 h-16 object-cover mr-4" />
-            <p>{category.name}</p>
-          </div>
-        ))}
+        {categories.map((category, index) => {
+          console.log(category.image_url); // Log image URLs
+          return (
+            <div key={index} className="flex items-center">
+              <img src={category.image_url} alt={category.name} className="w-16 h-16 object-cover mr-4" />
+              <p>{category.name}</p>
+            </div>
+          );
+        })}
       </div>
       <div className="mt-auto">
         <a href={link} className="text-blue-600 hover:text-orange-500 no-underline">See more</a>
