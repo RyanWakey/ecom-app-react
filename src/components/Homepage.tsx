@@ -37,8 +37,8 @@ const Homepage: React.FC = () => {
 
   const renderProductSection = (title: string, products: Product[], link: string) => (
     <div className="bg-white p-6 shadow-md flex flex-col justify-between">
-      <h2 className="text-xl font-semibold mb-4">{title}</h2>
-      <div className="space-y-4">
+    <h2 className="text-xl font-semibold mb-4">{title}</h2>
+    <div className="grid grid-cols-2 gap-4">
         {products.map((product) => (
           <div key={product.id} className="flex items-center">
             <img src={product.images[0]?.url} alt={product.name} className="w-16 h-16 object-cover mr-4" />
