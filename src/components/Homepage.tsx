@@ -37,8 +37,8 @@ const Homepage: React.FC = () => {
 
   const renderProductSection = (title: string, products: Product[], link: string) => (
     <div className="bg-white p-6 shadow-md flex flex-col justify-between">
-    <h2 className="text-xl font-semibold mb-4">{title}</h2>
-    <div className="grid grid-cols-2 gap-4">
+      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+      <div className="grid grid-cols-2 gap-4">
         {products.map((product) => (
           <div key={product.id} className="flex items-center">
             <img src={product.images[0]?.url} alt={product.name} className="w-16 h-16 object-cover mr-4" />
@@ -57,9 +57,9 @@ const Homepage: React.FC = () => {
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
       <div className="grid grid-cols-2 gap-4">
         {categories.map((category, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <img src={category.image_url} alt={category.name} className="w-full h-24 object-cover" />
-            <p className="mt-2 text-center">{category.name}</p>
+          <div key={index} className="flex flex-col">
+            <img src={category.image_url} alt={category.name} className="w-full h-32 object-cover" />
+            <p className="mt-1 text-left text-xs font-bold">{category.name}</p>
           </div>
         ))}
       </div>
