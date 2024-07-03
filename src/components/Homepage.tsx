@@ -86,16 +86,14 @@ const Homepage: React.FC = () => {
               {renderProductSection('Continue shopping deals', deals, '/deals')}
               {renderProductSection('Today\'s Deals', todayDeals, '/today-deals')}
               {renderCategorySection('Garden Essentials', gardenEssentials, '/garden-essentials')}
-              {renderProductSection('Popular Categories', techEssentials, '/popular-categories')}
+              {renderCategorySection('Popular Categories', popularCategories, '/popular-categories')}
               {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
-              {renderProductSection('Beauty and Wellness', beautyWellness, '/beauty-wellness')}
             </>
           ) : (
             <>
               {renderCategorySection('Garden Essentials', gardenEssentials, '/garden-essentials')}
-              {renderProductSection('Popular Categories', techEssentials, '/popular-categories')}
+              {renderCategorySection('Popular Categories', popularCategories, '/popular-categories')}
               {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
-              {renderProductSection('Beauty and Wellness', beautyWellness, '/beauty-wellness')}
             </>
           )}
         </div>
