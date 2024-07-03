@@ -13,6 +13,7 @@ const Homepage: React.FC = () => {
   
   const [techEssentials, setTechEssentials] = useState<Product[]>([]);
   const [gardenEssentials, setGardenEssentials] = useState<Category[]>([]);
+  const [popularCategories, setPopularCategories] = useState<Category[]>([]);
   const [mustHaveProducts, setMustHaveProducts] = useState<Product[]>([]);
   const [beautyWellness, setBeautyWellness] = useState<Product[]>([]);
 
@@ -28,6 +29,9 @@ const Homepage: React.FC = () => {
       // axios.get('/tech-essentials').then(response => setTechEssentials(response.data));
       const gardenEssentialsResponse = await axios.get('/api/garden-essentials-subcategories');
       setGardenEssentials(gardenEssentialsResponse.data.data);
+
+      const popularCategoriesResponse = await axios.get('/api/popular-categories');
+      setPopularCategories(popularCategoriesResponse.data.data);
       // axios.get('/must-have-products').then(response => setMustHaveProducts(response.data));
       // axios.get('/api/beauty-wellness').then(response => setBeautyWellness(response.data));
     };
