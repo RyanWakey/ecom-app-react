@@ -83,6 +83,19 @@ const Homepage: React.FC = () => {
     </div>
   );
 
+  const renderSignInSuggestionSection = (title: string, buttonText: string, link: string) => (
+    <div className="bg-white p-6 shadow-md flex flex-col justify-between items-center">
+      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+      <button
+        onClick={() => window.location.href = link}
+        className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded"
+      >
+        {buttonText}
+      </button>
+    </div>
+  );
+
+
   return (
     <div className="bg-[#e3e6e6] min-h-screen relative">
       <TopBannerCarousel />
