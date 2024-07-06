@@ -84,7 +84,7 @@ const Homepage: React.FC = () => {
   );
 
   const renderSignInSuggestionSection = (title: string, buttonText: string, link: string) => (
-    <div className="bg-white p-6 shadow-md flex flex-col justify-between items-center">
+    <div className="bg-white p-6 shadow-md flex flex-col items-center">
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
       <button
         onClick={() => window.location.href = link}
@@ -100,7 +100,7 @@ const Homepage: React.FC = () => {
     <div className="bg-[#e3e6e6] min-h-screen relative">
       <TopBannerCarousel />
       <div className="relative flex flex-col items-center z-10">
-        <div className="relative -mt-72 w-full px-4 max-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="relative -mt-72 w-full px-4 max-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-min">
           {user ? (
             <>
               {renderProductSection('Pick up where you left off', browsingHistory, '/browsing-history')}
