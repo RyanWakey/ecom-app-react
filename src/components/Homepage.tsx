@@ -73,6 +73,15 @@ const Homepage: React.FC = () => {
     </div>
   );
   
+  const renderTextSection = (title: string, description: string, linkText: string, link: string) => (
+    <div className="bg-white p-6 shadow-md flex flex-col justify-between">
+      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+      <p className="mb-4">{description}</p>
+      <div className="mt-auto text-center">
+        <a href={link} className="text-blue-600 hover:text-orange-500 no-underline">{linkText}</a>
+      </div>
+    </div>
+  );
 
   return (
     <div className="bg-[#e3e6e6] min-h-screen relative">
@@ -94,6 +103,7 @@ const Homepage: React.FC = () => {
               {renderCategorySection('Garden Essentials', gardenEssentials, '/garden-essentials')}
               {renderCategorySection('Popular Categories', popularCategories, '/popular-categories')}
               {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
+              
             </>
           )}
         </div>
