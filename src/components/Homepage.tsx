@@ -116,7 +116,7 @@ const Homepage: React.FC = () => {
               {renderCategorySection('Garden Essentials', gardenEssentials, '/garden-essentials')}
               {renderCategorySection('Popular Categories', popularCategories, '/popular-categories')}
               {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
-              {renderTextSection('Sign in for your best experience', '', 'Sign in securely', '/login')}
+              {renderSignInSuggestionSection('Sign in for your best experience', 'Sign in securely', '/login')}
               
             </>
           )}
