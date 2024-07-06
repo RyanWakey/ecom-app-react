@@ -93,7 +93,7 @@ const Homepage: React.FC = () => {
               {renderProductSection('Pick up where you left off', browsingHistory, '/browsing-history')}
               {renderProductSection('Products that might interest you', recommendedProducts, '/recommended-products')}
               {renderProductSection('Continue shopping deals', deals, '/deals')}
-              {renderProductSection('Today\'s Deals', todayDeals, '/today-deals')}
+              {renderTextSection('Today\'s Deals', 'Looking for a Deal? Browse 1000s of Deals on top selling products', 'Shop all Deals', '/deals')}
               {renderCategorySection('Garden Essentials', gardenEssentials, '/garden-essentials')}
               {renderCategorySection('Popular Categories', popularCategories, '/popular-categories')}
               {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
@@ -103,6 +103,7 @@ const Homepage: React.FC = () => {
               {renderCategorySection('Garden Essentials', gardenEssentials, '/garden-essentials')}
               {renderCategorySection('Popular Categories', popularCategories, '/popular-categories')}
               {renderProductSection('Must-have Products', mustHaveProducts, '/must-have-products')}
+              {renderTextSection('Sign in for your best experience', '', 'Sign in securely', '/login')}
               
             </>
           )}
